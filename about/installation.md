@@ -3,12 +3,12 @@
 # Installation
 
 The course is available on this repository:
-https://github.com/SizingLab/EVpowertrain
+https://marcbudinger.github.io/EVpowertrain/
 
 ### Colab
 Open [Google Colab](https://colab.research.google.com), open a new notebook and clone the repository by running in a cell:
 
-`https://github.com/SizingLab/EVpowertrain.git`
+`https://marcbudinger.github.io/EVpowertrain.git`
 
 
 Then install the required dependencies by running in a cell:
@@ -18,7 +18,7 @@ Then install the required dependencies by running in a cell:
 ### Local
 Install [Anaconda](https://www.anaconda.com/download) environment.  
 
-Download the zip file from [Github](https://github.com/SizingLab/EVpowertrain) and unzip it.
+Download the zip file from [Github](https://github.com/marcbudinger/EVpowertrain) and unzip it.
 
 Open a Anaconda Prompt terminal and `cd` to the recently unziped folder.
 

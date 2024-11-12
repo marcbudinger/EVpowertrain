@@ -6,10 +6,9 @@ parts:
   - file: about/syllabus
   - file: about/installation
   
-
 - caption: Vehicule Powertrain
   chapters:
-    - file: notebook/01_PowerTrain
+  - file: notebook/01_PowerTrain
       
 
       
