@@ -25,8 +25,8 @@ The vehicle studied is a G4 electric utility vehicle from the [Goupil](www.goupi
 
 
 ## Tools:
-- Course website (https://sizinglab.github.io/EVpowertrain/)
-- Course Github repository (https://github.com/SizingLab/EVpowertrain)
+- Course website (https://marcbudinger.github.io/EVpowertrain/)
+- Course Github repository (https://github.com/marcbudinger/EVpowertrain)
 - Python (Jupyter Notebooks)
 
 
