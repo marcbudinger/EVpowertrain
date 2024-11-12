@@ -1,0 +1,20 @@
+format: jb-book
+root: about/homepage
+parts:
+- caption: About
+  chapters:
+  - file: about/syllabus
+  - file: about/installation
+  
+
+- caption: Vehicule powertrain
+  chapters:
+    - file: notebook/01_PowerTrain
+      
+
+      
+      
+      
+      
+
+      
