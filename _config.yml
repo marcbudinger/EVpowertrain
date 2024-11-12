@@ -29,7 +29,7 @@ html:
   # comments:
   #   hypothesis: false
   #   utterances:
-  #     repo: "SizingLab/SystemsEngineeringIntroduction"
+  #     repo: "marcbudinger/EVpowertrain"
   #   dokieli: false
 
 launch_buttons:
@@ -38,7 +38,7 @@ launch_buttons:
   colab_url          : "https://colab.research.google.com"
 
 repository: 
-  url          : https://github.com/marcbudinger/EVpowertrain
+  url          : "https://github.com/marcbudinger/EVpowertrain"
   path_to_book : ""
   branch       : main
 
