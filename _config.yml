@@ -38,7 +38,7 @@ launch_buttons:
   colab_url          : "https://colab.research.google.com"
 
 repository: 
-  url          : https://github.com/SizingLab/EVpowertrain
+  url          : https://github.com/marcbudinger/EVpowertrain
   path_to_book : ""
   branch       : main
 
