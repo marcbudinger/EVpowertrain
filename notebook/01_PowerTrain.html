@@ -1,0 +1,682 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Complex technological systems and space systems &#8212; EV powertrain modeling</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/exercise.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebook/01_PowerTrain';</script>
+    <link rel="shortcut icon" href="../_static/logo.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Installation" href="../about/installation.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../about/homepage.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="EV powertrain modeling - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="EV powertrain modeling - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">About</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../about/syllabus.html">Course Description</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about/installation.html">Installation</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Vehicule Powertrain</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Complex technological systems and space systems</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/SizingLab/EVpowertrain/main?urlpath=lab/tree/notebook/01_PowerTrain.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onBinder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/SizingLab/EVpowertrain/blob/main/notebook/01_PowerTrain.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/SizingLab/EVpowertrain" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/SizingLab/EVpowertrain/edit/main/notebook/01_PowerTrain.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/SizingLab/EVpowertrain/issues/new?title=Issue%20on%20page%20%2Fnotebook/01_PowerTrain.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/notebook/01_PowerTrain.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Complex technological systems and space systems</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#from-mechanical-systems-to-complex-technological-systems">From mechanical systems to complex technological systems</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#system-definition">System definition</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#space-systems-in-new-space">Space systems in New Space</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cubesat-platform">Cubesat platform</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#case-study">Case study</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#homework">Homework</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="complex-technological-systems-and-space-systems">
+<h1>Complex technological systems and space systems<a class="headerlink" href="#complex-technological-systems-and-space-systems" title="Permalink to this heading">#</a></h1>
+<p><em>Written by Marc Budinger, INSA Toulouse, France</em></p>
+<section id="from-mechanical-systems-to-complex-technological-systems">
+<h2>From mechanical systems to complex technological systems<a class="headerlink" href="#from-mechanical-systems-to-complex-technological-systems" title="Permalink to this heading">#</a></h2>
+<p>Many mechanical systems have evolved into complex technological systems.</p>
+<blockquote>
+<div><p>Under each figure, answer the following questions:</p>
+<ul class="simple">
+<li><p>What are their functions, performance and reliability?</p></li>
+<li><p>What technical fields are needed to design them?</p></li>
+<li><p>Which engineers?</p></li>
+</ul>
+</div></blockquote>
+<p><img alt="Mechanical Systems" src="notebook/figures/MechanicalSystems.png" /></p>
+<p><img alt="Complex Systems" src="notebook/figures/ComplexSystems.png" /></p>
+<p>The car is typical of this evolution in technological systems.</p>
+<p><img alt="Complex Systems" src="notebook/figures/ElectricAutomotive.png" /></p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Description<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text"><strong>Electronic and computer technologies</strong> have been integrated into combustion-powered vehicles:</p>
+<ul class="simple">
+<li><p class="sd-card-text">10 circuits (electrical and fluids)</p></li>
+<li><p class="sd-card-text">12% value = IT, &gt; 25 computers per vehicle</p></li>
+<li><p class="sd-card-text">30% value other than mechanical</p></li>
+</ul>
+<p class="sd-card-text"><strong>New architectures</strong> are seeing a multiplication of functions:</p>
+<ul class="simple">
+<li><p class="sd-card-text">GPS, Mobile, Multimedia</p></li>
+<li><p class="sd-card-text">Active safety (ABS, ESP, lane tracking, ADAS)</p></li>
+</ul>
+<p class="sd-card-text"><strong>Power electronics, electric motors and electrochemical technologies</strong> are playing an increasingly important role in:</p>
+<ul class="simple">
+<li><p class="sd-card-text">Driving assistance: electric steering, variable assistance and gear ratios</p></li>
+<li><p class="sd-card-text">Propulsion systems: hybrid and electric</p></li>
+<li><p class="sd-card-text">Energy storage: the price of the battery can represent 40 to 50% of the total price of the vehicle.</p></li>
+</ul>
+</div>
+</details></section>
+<section id="system-definition">
+<h2>System definition<a class="headerlink" href="#system-definition" title="Permalink to this heading">#</a></h2>
+<p>The System Engineering Handbook of NASA define a system [<span class="xref myst">Nasa, 2017</span>] as:</p>
+<blockquote>
+<div><p>A <strong>“system”</strong> is the <em>combination of elements</em> that function together to produce the capability required to <em>meet a need</em>. The elements include all <em>hardware, software</em>, equipment, facilities, personnel, processes, and procedures needed for this purpose; that is, all things required to produce system-level results. […] The value added by the system as a whole, beyond that contributed independently by the parts, is primarily created by the <em>relationship among the parts</em>; that is, <em>how they are interconnected</em>.</p>
+</div></blockquote>
+<p>The aim of this teaching module is to introduce you to the approaches needed to design a system, particularly with regard to the following aspects:<br />
+-<em>meet a need</em>: functional analysis, preliminary design<br />
+-<em>hardware, software</em>: mechatronic and electronic technology, programming<br />
+-<em>how they are interconnected</em>: architecture, system simulation<br />
+through a <strong>space subsystem</strong>.</p>
+</section>
+<section id="space-systems-in-new-space">
+<h2>Space systems in New Space<a class="headerlink" href="#space-systems-in-new-space" title="Permalink to this heading">#</a></h2>
+<p>NewSpace refers to the emergence of a private-initiative space industry at the beginning of the 21st century, stimulated by certain governments to strengthen international competitiveness while guaranteeing strategic independence in key sectors.</p>
+<blockquote>
+<div><p><strong>Note:</strong> <a class="reference external" href="https://www.connectbycnes.fr/">Connect by CNES</a> is a CNES field programme launched in 2016 to support the development of new space in France.</p>
+</div></blockquote>
+<p><img alt="Complex Systems" src="notebook/figures/ConnectByCnes.png" /></p>
+<p>NewSpace concern in particular a group of relatively new aerospace companies working to develop low-cost, public access to space exploration and space applications:</p>
+<ul class="simple">
+<li><p><strong>New Launchers:</strong> <a class="reference external" href="https://www.latitude.eu">Latitude</a> (formerly Venture Orbital Systems) is a French start-up based in Reims. It produces the Zephyr micro-launcher and its Navier 3D-printed engine to provide orbital launch services tailored to nano-satellites.</p></li>
+</ul>
+<a class="bg-primary mb-1 reference internal image-reference" href="https://www.journaldugeek.com/app/uploads/2022/06/cover-1.jpg"><img alt="Latitude" class="bg-primary mb-1 align-center" src="https://www.journaldugeek.com/app/uploads/2022/06/cover-1.jpg" style="width: 300px;" /></a>
+<ul class="simple">
+<li><p><strong>Nanosatellites constellations:</strong> <a class="reference external" href="https://www.kineis.com/iot-technologie/">Kineis</a> is a French project for a constellation of nano-satellites designed to provide Internet of Things (IoT) services via satellite. The Kineis project is a continuation of the Argos system, which has been in existence since the 1980s. <a class="reference external" href="https://www.hemeria-group.com/wp-content/uploads/2022/05/NANOSAT_FR_2022.pdf">Hemeria</a> supplies Kineis with the 25 nanosatellites of this 1st European nanosatellite constellation dedicated to the Internet of Things.</p></li>
+</ul>
+<a class="bg-primary mb-1 reference internal image-reference" href="https://www.kineis.com/wp-content/uploads/bb-plugin/cache/Constellation_1-circle-0de2c2188bf1839c34a8b9b26c0efb3b-5efuvcdow74l.jpg"><img alt="Kineis" class="bg-primary mb-1 align-center" src="https://www.kineis.com/wp-content/uploads/bb-plugin/cache/Constellation_1-circle-0de2c2188bf1839c34a8b9b26c0efb3b-5efuvcdow74l.jpg" style="width: 300px;" /></a>
+<ul class="simple">
+<li><p><strong>Ground applications</strong>: <a class="reference external" href="https://www.naio-technologies.com/">Naïo Technologies</a> is a Toulouse-based start-up specialising in agricultural robotics. The company develops and markets robots for farmers designed to reduce drudgery at work. Robtos are autonomous thanks to RTK GNSS positionning (Real-time kinematic satelite positioning providing up to centimetre-level accuracy).</p></li>
+</ul>
+<a class="bg-primary mb-1 reference internal image-reference" href="https://www.reference-agro.fr/wp-content/uploads/2020/09/Nouvelle-version-Ted-Naio-Technologies-min-1140x370.jpg.webp"><img alt="Naio" class="bg-primary mb-1 align-center" src="https://www.reference-agro.fr/wp-content/uploads/2020/09/Nouvelle-version-Ted-Naio-Technologies-min-1140x370.jpg.webp" style="width: 400px;" /></a>
+</section>
+<section id="cubesat-platform">
+<h2>Cubesat platform<a class="headerlink" href="#cubesat-platform" title="Permalink to this heading">#</a></h2>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/CubeSat">Cubesats</a> are nanosatellites using standardised formats (1 unit or 1U = 10 cm x 10 cm x 10 cm) and reusable technical subsystem <a class="reference external" href="https://www.cubesatshop.com/">kits</a> supplied by an ecosystem of companies and start-ups.</p>
+<a class="bg-primary mb-1 reference internal image-reference" href="https://upload.wikimedia.org/wikipedia/commons/9/9d/ArduSat3.png"><img alt="Cubesat" class="bg-primary mb-1 align-center" src="https://upload.wikimedia.org/wikipedia/commons/9/9d/ArduSat3.png" style="width: 400px;" /></a>
+<p>The graphic below, called Work Breakdown Structure (WBS), shows how a cubesat satellite programme can be broken down into products of different sizes or levels of complexity <span class="xref myst">Beale, 2006</span>: systems, sub-systems, components, parts.</p>
+<p><img alt="Cubesat WBS" src="notebook/figures/CubeSatWBS.svg" /></p>
+<p>The Product Breakdown Structure (PBS) decomposes the studied system into products and the Work Breakdown Structure (WBS) complete this structure with the tasks [<span class="xref myst">Faure, 2020</span>]:</p>
+<ul class="simple">
+<li><p>Products – Anything that can be built (e.g., structure), created (e.g., software), or bought
+(e.g., solar cells)</p></li>
+<li><p>Tasks – The work (and the workpackages) that need to be executed throughout the project (e.g., manage requirements; perform vibration test; carry out the integration of the payload with the
+satellite bus)</p></li>
+</ul>
+</section>
+<section id="case-study">
+<h2>Case study<a class="headerlink" href="#case-study" title="Permalink to this heading">#</a></h2>
+<p>During this teaching module, you will have to put yourself in the role of a start-up wanting to offer kits enabling the thermal control of cubesats. Your first products will be for applications requiring heating, such as batteries, liquid propellant tanks, scientific experiments, etc. This type of product contains both hardware (temperature control components) and software (temperature control algorithms).</p>
+<a class="bg-primary mb-1 reference internal image-reference" href="https://gomspace.com/Storage/cache/img/Storage/plugin_files/shop/productimages/12/59b7d4091c0df936bdccfd63e80de10b.png"><img alt="BatteryPack" class="bg-primary mb-1 align-center" src="https://gomspace.com/Storage/cache/img/Storage/plugin_files/shop/productimages/12/59b7d4091c0df936bdccfd63e80de10b.png" style="width: 400px;" /></a>
+</section>
+<section id="homework">
+<h2>Homework<a class="headerlink" href="#homework" title="Permalink to this heading">#</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li><p>Create your team (“binome” compatible with your Tutorials and Labs groups).</p></li>
+<li><p>Read these documents: <a class="reference external" href="https://www.asc-csa.gc.ca/fra/satellites/cubesat/qu-est-ce-qu-un-cubesat.asp">Les CubeSats en bref</a> and <a class="reference external" href="https://www.unoosa.org/documents/pdf/psa/access2space4all/KiboCUBE/AcademySeason2/On-demand_Pre-recorded_Lectures/KiboCUBE_Academy_2021_OPL07.pdf">Introduction to CubeSat Technologies</a></p></li>
+<li><p>Analysing the activities, products and services offered by companies in the NewSpace.</p></li>
+<li><p>Prepare a 2-slide pitch positioning a company on CubeSat’s Thermal Managment System (hardware, software, service).</p></li>
+</ul>
+</div></blockquote>
+</section>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this heading">#</a></h2>
+<p>[Nasa, 2017a] Hirshorn, S. R., Voss, L. D., &amp; Bromley, L. K. (2017). Nasa systems engineering handbook (No. HQ-E-DAA-TN38707). <a class="reference external" href="https://www.nasa.gov/wp-content/uploads/2018/09/nasa_systems_engineering_handbook_0.pdf">Link</a></p>
+<p>[Nasa, 2017b] Jamie, C., Roland, C., Justin, F., &amp; Alicia, J. (2017). Basic concepts and processes for first-time CubeSat developers. CubeSat101, CaliforDesign of a CubeSat Testbednia. <a class="reference external" href="https://www.nasa.gov/wp-content/uploads/2017/03/nasa_csli_cubesat_101_508.pdf">Link</a></p>
+<p>[Beale, 2006] Beale, D., &amp; Bonometti, J. (2006). Systems engineering (SE)-the systems design process. The Lunar Engineering Handbook, Auburg University, Auburn. <a class="reference external" href="https://www.eng.auburn.edu/~dbeale/ESMDCourse/Chapter3.htm">Link</a></p>
+<p>[Faure, 2020] Faure, P., (2020). SmallSats and Systems Engineering,  California Polytechnic State University.<a class="reference external" href="https://www.nasa.gov/wp-content/uploads/2020/06/s3vi_smallsats_and_se_pf_200715_0.pdf">Link</a></p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./notebook"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../about/installation.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Installation</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#from-mechanical-systems-to-complex-technological-systems">From mechanical systems to complex technological systems</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#system-definition">System definition</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#space-systems-in-new-space">Space systems in New Space</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cubesat-platform">Cubesat platform</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#case-study">Case study</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#homework">Homework</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Marc Budinger, INSA Toulouse
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
