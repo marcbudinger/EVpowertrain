@@ -7,7 +7,7 @@ parts:
   - file: about/installation
   
 
-- caption: Vehicule powertrain
+- caption: Vehicule Powertrain
   chapters:
     - file: notebook/01_PowerTrain
       
