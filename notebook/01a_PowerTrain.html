@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>TD - Modélisation de la transmission de puissance d’un utilitaire électrique &#8212; EV powertrain modeling</title>
+    <title>Sélection d’une motorisation &#8212; EV powertrain modeling</title>
   
   
   
@@ -65,11 +65,12 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'notebook/01_PowerTrain';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebook/01a_PowerTrain';</script>
     <link rel="shortcut icon" href="../_static/logo.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="prev" title="Installation" href="../about/installation.html" />
+    <link rel="next" title="&lt;no title&gt;" href="01b_Mesure_surface_goupil.html" />
+    <link rel="prev" title="Architecture système d’un véhicule électrique" href="00_Introduction.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -165,12 +166,16 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">About</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../about/syllabus.html">Course Description</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about/syllabus.html">Description du module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../about/installation.html">Installation</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Vehicule Powertrain</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="00_Introduction.html">Architecture système d’un véhicule électrique</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Motorisation</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">TD - Modélisation de la transmission de puissance d’un utilitaire électrique</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Sélection d’une motorisation</a></li>
 </ul>
 
     </div>
@@ -225,7 +230,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://mybinder.org/v2/gh/marcbudinger/EVpowertrain/main?urlpath=lab/tree/notebook/01_PowerTrain.ipynb" target="_blank"
+      <li><a href="https://mybinder.org/v2/gh/marcbudinger/EVpowertrain/main?urlpath=lab/tree/notebook/01a_PowerTrain.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
    title="Launch onBinder"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -243,7 +248,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://colab.research.google.com/github/marcbudinger/EVpowertrain/blob/main/notebook/01_PowerTrain.ipynb" target="_blank"
+      <li><a href="https://colab.research.google.com/github/marcbudinger/EVpowertrain/blob/main/notebook/01a_PowerTrain.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
    title="Launch onColab"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -291,7 +296,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/marcbudinger/EVpowertrain/edit/main/notebook/01_PowerTrain.ipynb" target="_blank"
+      <li><a href="https://github.com/marcbudinger/EVpowertrain/edit/main/notebook/01a_PowerTrain.ipynb" target="_blank"
    class="btn btn-sm btn-source-edit-button dropdown-item"
    title="Suggest edit"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -308,7 +313,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/marcbudinger/EVpowertrain/issues/new?title=Issue%20on%20page%20%2Fnotebook/01_PowerTrain.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/marcbudinger/EVpowertrain/issues/new?title=Issue%20on%20page%20%2Fnotebook/01a_PowerTrain.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -338,7 +343,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="../_sources/notebook/01_PowerTrain.ipynb" target="_blank"
+      <li><a href="../_sources/notebook/01a_PowerTrain.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -409,7 +414,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -420,11 +427,24 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>TD - Modélisation de la transmission de puissance d’un utilitaire électrique</h1>
+    <h1>Sélection d’une motorisation</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#presentation-des-caracteristiques-du-vehicule">Présentation des caractéristiques du véhicule</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modelisation-de-la-dynamique-longitudinale">Modélisation de la dynamique longitudinale</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modelisation-de-la-transmission-de-puissance">Modélisation de la transmission de puissance**</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation-dun-profil-dutilisation">Simulation d’un profil d’utilisation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#selection-dun-moteur">Sélection d’un moteur</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">Références</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -434,208 +454,170 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section id="td-modelisation-de-la-transmission-de-puissance-dun-utilitaire-electrique">
-<h1>TD - Modélisation de la transmission de puissance d’un utilitaire électrique<a class="headerlink" href="#td-modelisation-de-la-transmission-de-puissance-dun-utilitaire-electrique" title="Permalink to this heading">#</a></h1>
-<p>Le Goupil G4 (<strong>Figure 1</strong>) est un petit utilitaire électrique urbain,
-utilisé par les villes et les entreprises pour déplacer de petites
-charges sur de courtes distances (livraison, entretien de parcs,
-services techniques).</p>
-<p>L’objectif de ce problème est de simuler la transmission de puissance de
-la motorisation électrique du Goupil. Le <strong>Tableau 1</strong> donne les
-principales caractéristiques des différents composants mécaniques du
-Goupil G4.</p>
-<table>
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
+  <section class="tex2jax_ignore mathjax_ignore" id="selection-dune-motorisation">
+<h1>Sélection d’une motorisation<a class="headerlink" href="#selection-dune-motorisation" title="Permalink to this heading">#</a></h1>
+<section id="presentation-des-caracteristiques-du-vehicule">
+<h2>Présentation des caractéristiques du véhicule<a class="headerlink" href="#presentation-des-caracteristiques-du-vehicule" title="Permalink to this heading">#</a></h2>
+<p>Le <a class="reference external" href="https://www.goupil-ev.com/fr/">Goupil</a> G4 (<strong>Figure 1</strong>) est un petit utilitaire électrique urbain, utilisé par les villes et les entreprises pour déplacer de petites charges sur de courtes distances (livraison, entretien de parcs, services techniques).</p>
+<p><em>Figure 1 – Véhicule utilitaire électrique Goupil</em><br />
+<img alt="Véhicule utilitaire électrique Goupil G4 Long 9 kWh Lithium 2 CV" src="../_images/GoupilG4.jpg" /></p>
+<p>L’objectif de ce problème est de simuler la dynamique longitudinale du véhicule et sa transmission de puissance afin de sélectionner une motorisation électrique. Le <strong>Tableau 1</strong> donne les principales caractéristiques des différents composants mécaniques du Goupil G4.</p>
+<p><em>Tableau 1 – Caractéristiques générales du Goupil G4 et de ses composants mécaniques</em></p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Caractéristiques générales</p></th>
+<th class="head"><p></p></th>
+</tr>
+</thead>
 <tbody>
-<tr class="odd">
-<td colspan="2"><strong>Caractéristiques générales</strong></td>
+<tr class="row-even"><td><p>Masse du Goupil G4 (sans batterie)</p></td>
+<td><p>582 kg</p></td>
 </tr>
-<tr class="even">
-<td><p>Masse du Goupil G4 (sans batterie)</p>
-<p>Masse du pack batterie</p>
-<p>Masse du conducteur</p>
-<p>Masse du chargement</p></td>
-<td><p>582 kg</p>
-<p>148 kg</p>
-<p>70 kg</p>
-<p>500 kg</p></td>
+<tr class="row-odd"><td><p>Masse du pack batterie</p></td>
+<td><p>148 kg</p></td>
 </tr>
-<tr class="odd">
-<td>Vitesse maximale</td>
-<td>50 km/h</td>
+<tr class="row-even"><td><p>Masse du conducteur</p></td>
+<td><p>70 kg</p></td>
 </tr>
-<tr class="even">
-<td>Pente maximale</td>
-<td>15%</td>
+<tr class="row-odd"><td><p>Masse du chargement</p></td>
+<td><p>500 kg</p></td>
 </tr>
-<tr class="odd">
-<td colspan="2"><strong>Roues</strong></td>
+<tr class="row-even"><td><p>Vitesse maximale</p></td>
+<td><p>50 km/h</p></td>
 </tr>
-<tr class="even">
-<td>Diamètre extérieur</td>
-<td><em>d</em> = 578 mm</td>
-</tr>
-<tr class="odd">
-<td>Coefficient de résistance au roulement</td>
-<td><em>C<sub>rr</sub></em> = 100.10<sup>-4</sup></td>
-</tr>
-<tr class="even">
-<td>Inertie d’une roue</td>
-<td><em>I</em> = 0,42 kg.m²</td>
-</tr>
-<tr class="odd">
-<td colspan="2"><strong>Réducteur</strong></td>
-</tr>
-<tr class="even">
-<td><p><strong>Pignons droits</strong></p>
-<p>Rapport de réduction</p>
-<p>Inertie (sur axe rapide)</p>
-<p>Rendement</p></td>
-<td><p>14,87</p>
-<p>0.57e-4 kg.m²</p>
-<p>0.88</p></td>
-</tr>
-<tr class="odd">
-<td colspan="2"><strong>Considérations aérodynamiques</strong></td>
-</tr>
-<tr class="even">
-<td>Surface de pénétration dans l’air (S)</td>
-<td>2,1 m2</td>
-</tr>
-<tr class="odd">
-<td>Masse volumique de l’air à 20°C</td>
-<td>1,205 kg. m<sup>-3</sup></td>
-</tr>
-<tr class="even">
-<td>Coefficient de pénétration dans l’air</td>
-<td>0.4</td>
+<tr class="row-odd"><td><p>Pente maximale</p></td>
+<td><p>15%</p></td>
 </tr>
 </tbody>
 </table>
-<p><strong>Tableau 1</strong> <em>–</em> Caractéristiques générales du Goupil G4 et des
-composants mécaniques</p>
-<p><img alt="Véhicule utilitaire électrique Goupil G4 Long 9 kWh Lithium 2 CV - Avec avance bonus - 50 km/h - ugap.fr" src="notebook/attachment:media/image1.jpg" /></p>
-<p><strong>Figure 1</strong> – Goupil électrique</p>
-<p><strong>Modélisation du Goupil</strong></p>
-<ol class="arabic simple">
-<li><p>Proposez un diagramme 1D et donnez les équations correspondantes
-permettant de modéliser la dynamique du Goupil en translation en
-prenant notamment en compte les forces suivantes:</p></li>
-</ol>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Roues</p></th>
+<th class="head"><p></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Diamètre extérieur</p></td>
+<td><p>578 mm</p></td>
+</tr>
+<tr class="row-odd"><td><p>Coefficient de résistance au roulement</p></td>
+<td><p>100.10<sup>-4</p></td>
+</tr>
+<tr class="row-even"><td><p>Inertie d’une roue</p></td>
+<td><p>0.42 kg.m²</p></td>
+</tr>
+</tbody>
+</table>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Réducteur</p></th>
+<th class="head"><p></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Rapport de réduction</p></td>
+<td><p>14.87</p></td>
+</tr>
+<tr class="row-odd"><td><p>Inertie (sur axe rapide)</p></td>
+<td><p>0.57.10<sup>-4 </sup>kg.m²</p></td>
+</tr>
+<tr class="row-even"><td><p>Rendement</p></td>
+<td><p>0.88</p></td>
+</tr>
+</tbody>
+</table>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Considérations aérodynamiques</p></th>
+<th class="head"><p></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Surface de pénétration dans l’air (S)</p></td>
+<td><p>2.1 m2</p></td>
+</tr>
+<tr class="row-odd"><td><p>Masse volumique de l’air à 20°C</p></td>
+<td><p>1.205 kg. m<sup>-3</p></td>
+</tr>
+<tr class="row-even"><td><p>Coefficient de pénétration dans l’air</p></td>
+<td><p>0.4</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="modelisation-de-la-dynamique-longitudinale">
+<h2>Modélisation de la dynamique longitudinale<a class="headerlink" href="#modelisation-de-la-dynamique-longitudinale" title="Permalink to this heading">#</a></h2>
+<p>Un modèle mécanique longitudinal [<span class="xref myst">DUYSINX, 2020</span>] permet d’estimer la puissance motrice nécessaire pour assurer certains points de fonctionnement du véhicule. Il peut servir également de base pour prédire des consommations énergétiques sur cycles.</p>
+<blockquote>
+<div><p><strong>Question :</strong> Proposez un diagramme 0D/1D et donnez les équations correspondantes permettant de modéliser la dynamique du Goupil en translation en prenant notamment en compte les forces suivantes:</p>
 <ul class="simple">
 <li><p>L’inertie en translation du Goupil et du conducteur;</p></li>
-</ul>
-<!-- -->
-<ul class="simple">
 <li><p>L’effet de la gravité dans une pente;</p></li>
 <li><p>Les efforts aérodynamiques
-<span class="math notranslate nohighlight">\(F_{aero} = \frac{1}{2}.\rho_{air}C_{x}S.v^{2} \approx 0,5061.v^{2}\)</span>
-en N où <em>v</em> correspond à la vitesse du Goupil en m/s ;</p></li>
-<li><p>Les efforts de résistance au roulement proportionnels à l’effort
-normal sur les roues et au coefficient de résistance de roulement
-<em>C<sub>rr</sub></em> des pneus. Sur route, avec un gonflage adéquat, on
-considèrera <em>C<sub>rr</sub></em> = 100.10<sup>-4</sup>.</p></li>
+<span class="math notranslate nohighlight">\(F_{aero} = \frac{1}{2}.\rho_{air}C_{x}S.v^{2} \approx 0.5061.v^{2}\)</span> en N où <em>v</em> correspond à la vitesse du Goupil en m/s ;</p></li>
+<li><p>Les efforts de résistance au roulement proportionnels à l’effort     normal sur les roues et au coefficient de résistance de roulement <em>C<sub>rr</sub></em> des pneus. Sur route, avec un gonflage adéquat, on considèrera <em>C<sub>rr</sub></em> = 100.10<sup>-4</sup>.</p></li>
 </ul>
-<ol class="arabic simple">
-<li><p>Implémentez ce modèle dans la brique vide du modèle <em>Goupil</em>.
-L’entrée de type signal correspond à la pente (où 0.07 correspond à
-une pente de 7%). Le port mécanique permettra de modéliser les
-efforts équivalents de la motorisation.</p></li>
-</ol>
-<p><u>Remarque 1</u> : <em>GoupilMass, Crr, Alpha (0,3), g</em> sont des
-coefficients declarés dans le modèle <em>Goupil</em>.</p>
-<p><u>Remarque 2</u> : Pour votre modèle vous pouvez utiliser des modèles
-de la librairie standard (MSL) comme</p>
+</div></blockquote>
+<p>Implémentez ce modèle dans la brique vide du modèle <em>Goupil</em> du fichier Modelica <span class="xref myst">fourni</span>. L’entrée de type signal correspond à la pente (où 0.07 correspond à une pente de 7%). Le port mécanique permettra de modéliser les efforts équivalents de la motorisation.</p>
+<p><strong>Remarque 1</strong> : <em>GoupilMass, Crr, Alpha (0,3), g</em> sont des coefficients declarés dans le modèle <em>Goupil</em>.</p>
+<p><strong>Remarque 2</strong> : Pour votre modèle vous pouvez utiliser des modèles de la librairie standard (MSL) comme</p>
 <ul class="simple">
-<li><p>dans <em>Modelica/Mechanics/Tranlational/</em> les sources d’effort
-(<em>Sources/Force</em>) et composants de type inertie ou frottement
-(<em>Components/Mass, Components/SupportFriction</em>) ;</p></li>
+<li><p>dans <em>Modelica/Mechanics/Translational/</em> les sources d’effort (<em>Sources/Force</em>) et composants de type inertie ou frottement (<em>Components/Mass, Components/SupportFriction</em>);</p></li>
 <li><p>dans <em>Modelica/Blocks/Math</em> : <em>Sum, Product, Gain, Atan, Sin, …</em></p></li>
 </ul>
-<ol class="arabic simple">
-<li><p>Calculez analytiquement l’effort à fournir pour obtenir en régime
-permanent une vitesse <em>v</em> = 30 km/h sur une pente de 7%.</p></li>
-<li><p>Validez par simulation ce résultat en utilisant le modèle
-<em>TestGoupil</em>.</p></li>
-</ol>
-<p>**<br />
-**</p>
-<p><strong>Modélisation de la transmission de puissance</strong></p>
-<p>L’ensemble des deux réducteurs (différentiel et à pignons droits) peut
-se représenter par un réducteur équivalent présentant les
-caractéristiques suivantes :</p>
+<blockquote>
+<div><p><strong>Question :</strong> Calculez analytiquement l’effort à fournir pour obtenir en régime permanent une vitesse <em>v</em> = 30 km/h sur une pente de 7%. Validez par simulation ce résultat en utilisant le modèle <em>TestGoupil</em>.</p>
+</div></blockquote>
+</section>
+<section id="modelisation-de-la-transmission-de-puissance">
+<h2>Modélisation de la transmission de puissance**<a class="headerlink" href="#modelisation-de-la-transmission-de-puissance" title="Permalink to this heading">#</a></h2>
+<p>L’ensemble des deux réducteurs (différentiel et à pignons droits) peut se représenter par un réducteur équivalent présentant les caractéristiques suivantes :  inertie sur l’axe rapide 0,57 kg.cm<sup>2</sup>, rapport de réduction global 14.87, rendement global de 88%. Les effets des raideurs ne sont pas pris en compte ici.</p>
+<blockquote>
+<div><p><strong>Question :</strong>  Calculez analytiquement pour le point opérationnel précédent (vitesse constante de 30 km/h, pente de 7%):</p>
 <ul class="simple">
-<li><p>Inertie sur l’axe rapide : 0,57 kg.cm<sup>2</sup> ;</p></li>
-<li><p>Rapport de réduction global : 14.87 ;</p></li>
-<li><p>Rendement global : 88% ;</p></li>
-<li><p>Les effets des raideurs ne sont pas pris en compte ici.</p></li>
-</ul>
-<ol class="arabic simple">
-<li><p>Calculez analytiquement pour le point opérationnel précédent
-(vitesse constante de 30 km/h, pente de 7%) :</p></li>
-</ol>
-<ul class="simple">
-<li><p>La vitesse angulaire de la roue et la vitesse du moteur électrique
-(sur l’axe rapide du réducteur équivalent) ;</p></li>
+<li><p>La vitesse angulaire de la roue et la vitesse du moteur électrique (sur l’axe rapide du réducteur équivalent) ;</p></li>
 <li><p>Les pertes du réducteur ;</p></li>
 <li><p>La puissance mécanique sur l’axe rapide ;</p></li>
 <li><p>Le couple et la puissance du moteur ;</p></li>
 </ul>
-<ol class="arabic simple">
-<li><p>Paramétrez et simulez le modèle <em>TestSlopeMotor</em>. Ce modèle
-représente un profil de mission que le Goupil doit être capable de
-réaliser en fonctionnement nominal avec un chargement de 500kgs.</p></li>
-<li><p>Calculez la masse équivalente des inerties des roues et du
-réducteur. Conclure quant à leurs impacts sur la dynamique du
-système.</p></li>
-</ol>
-<blockquote>
-<div><p>Retrouvez ce résultat sur le modèle <em>TestSlopeMotor.</em></p>
 </div></blockquote>
-<ol class="arabic simple">
-<li><p>On souhaite à présent modéliser un profil d’utilisation plus
-représentatif des conditions réelles d’utilisation du véhicule,
-complétez le modèle <em>TestProfile_Cycle.</em></p></li>
-</ol>
+<p>Paramétrez et simulez le modèle <em>TestSlopeMotor</em>. Ce modèle représente un profil de mission que le Goupil doit être capable de réaliser en fonctionnement nominal avec un chargement de 500 kg.</p>
 <blockquote>
-<div><p>Relevez la puissance maximale à fournir par le moteur pour réaliser
-cette mission et le couple RMS en fin de cycle.</p>
+<div><p><strong>Question :</strong>   Calculez la masse équivalente des inerties des roues et du réducteur. Conclure quant à leurs impacts sur la dynamique du système. Retrouvez ce résultat sur le modèle <em>TestSlopeMotor.</em></p>
 </div></blockquote>
-<p><u>Remarque 3</u> : le bloc <em>SpeedTable</em> fournit l’évolution du profil
-de vitesse au cours du temps et le bloc <em>SlopeTable</em> l’évolution de la
-pente en fonction de la position du véhicule.</p>
-<p><u>Remarque 4</u> : le Root Mean Square Torque (couple RMS) est la
-moyenne quadratique du couple au cours d’un cycle. Pour des
-considérations thermiques, il faut que ce couple soit inférieur au
-couple nominal du moteur.</p>
-<ol class="arabic simple">
-<li><p>Établir le profil vitesse de rotation et couple moteur pour réaliser
-ce cycle.</p></li>
-</ol>
-<p><u>Remarque 5</u> : Sur Dymola, après simulation, vous pouvez changer la
-variable des abscisses de votre graphe en utilisant l’outil <em>Indepent
-Variable</em> de l’onglet <em>Plot Options</em>. Vous devez au préalable avoir
-sélectionné dans l’arborescence <em>Variable Browser</em> la variable que vous
-souhaitez utiliser comme référence.</p>
-<ol class="arabic simple">
-<li><p>Nous souhaitons utiliser un moteur IP54 CH6 de la marque ABB. A
-partir du <strong>Tableau 4</strong> et du <strong>Graphe 1</strong>, sélectionnez une
-configuration de bobinage (<em>Speed 1, 2, 3, 5, 7</em> pour un prototype
-de ce véhicule ?</p></li>
-</ol>
-<p><u>Remarque 6</u> : Pour une même architecture de moteur, jouer sur le
-nombre de spires du bobinage (et de ce fait sur sa section) permet
-d’obtenir des caractéristiques de moteur différentes.</p>
+</section>
+<section id="simulation-dun-profil-dutilisation">
+<h2>Simulation d’un profil d’utilisation<a class="headerlink" href="#simulation-dun-profil-dutilisation" title="Permalink to this heading">#</a></h2>
+<p>On souhaite à présent modéliser un profil d’utilisation plus représentatif des conditions réelles d’utilisation du véhicule. Complétez pour cela le modèle <em>TestProfile_Cycle</em>:</p>
+<ul class="simple">
+<li><p>le bloc <em>SpeedTable</em> fournit l’évolution du profil de vitesse au cours du temps</p></li>
+<li><p>le bloc <em>SlopeTable</em> founrit l’évolution de la pente en fonction de la position du véhicule.</p></li>
+</ul>
+<blockquote>
+<div><p><strong>Question:</strong> Relevez la puissance maximale à fournir par le moteur pour réaliser cette mission et le couple RMS en fin de cycle.   Établissez le profil vitesse de rotation et couple moteur pour réaliser ce cycle.</p>
+</div></blockquote>
+<p><strong>Remarque</strong> : le Root Mean Square Torque (couple RMS) est la moyenne quadratique du couple au cours d’un cycle. Pour des considérations thermiques, il faut que ce couple soit inférieur au couple nominal du moteur.</p>
+<p><strong>Remarque</strong> : Sur Dymola, après simulation, vous pouvez changer la variable des abscisses de votre graphe en utilisant l’outil <em>Indepent Variable</em> de l’onglet <em>Plot Options</em>. Vous devez au préalable avoir sélectionné dans l’arborescence <em>Variable Browser</em> la variable que vous souhaitez utiliser comme référence.</p>
+</section>
+<section id="selection-dun-moteur">
+<h2>Sélection d’un moteur<a class="headerlink" href="#selection-dun-moteur" title="Permalink to this heading">#</a></h2>
+<p>Nous souhaitons utiliser un moteur IP54 CH6 de la marque ABB. A partir du <strong>Tableau 4</strong> et du <strong>Graphe 1</strong>.</p>
+<blockquote>
+<div><p><em>Question:</em> Sélectionnez une configuration de bobinage (<em>Speed 1, 2, 3, 5, 7</em> pour un prototype de ce véhicule ?</p>
+</div></blockquote>
+<p><strong>Remarque</strong> : Pour une même architecture de moteur, jouer sur le nombre de spires du bobinage (et de ce fait sur sa section) permet d’obtenir des caractéristiques de moteur différentes.</p>
 <blockquote>
 <div><p><img alt="notebook/attachment:media/image2.png" src="notebook/attachment:media/image2.png" /></p>
 </div></blockquote>
-<p><strong>Tableau 2</strong>*–* Moteurs asynchrones de la marque ABB</p>
+<p><strong>Tableau 2</strong>*– Moteurs asynchrones de la marque ABB</p>
 <p><img alt="notebook/attachment:media/image3.png" src="notebook/attachment:media/image3.png" /></p>
 <p><strong>Graphe 1</strong> <em>–</em> Profils d’utilisation des moteurs des différentes
 configuration moteur</p>
+</section>
+<section id="references">
+<h2>Références<a class="headerlink" href="#references" title="Permalink to this heading">#</a></h2>
+<p>[DUYSINX, 2020] DUYSINX, Pierre. “MECA0525: PERFORMANCES ET COMPORTEMENT DES VEHICULES”, Universite de Liège. <a class="reference external" href="http://www.ingveh.ulg.ac.be/uploads/education/MECA0525/notes/MECA0525.pdf">Link</a></p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -669,13 +651,22 @@ configuration moteur</p>
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../about/installation.html"
+       href="00_Introduction.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Installation</p>
+        <p class="prev-next-title">Architecture système d’un véhicule électrique</p>
       </div>
+    </a>
+    <a class="right-next"
+       href="01b_Mesure_surface_goupil.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">&lt;no title&gt;</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>
@@ -683,6 +674,25 @@ configuration moteur</p>
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#presentation-des-caracteristiques-du-vehicule">Présentation des caractéristiques du véhicule</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modelisation-de-la-dynamique-longitudinale">Modélisation de la dynamique longitudinale</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modelisation-de-la-transmission-de-puissance">Modélisation de la transmission de puissance**</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation-dun-profil-dutilisation">Simulation d’un profil d’utilisation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#selection-dun-moteur">Sélection d’un moteur</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">Références</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>

@@ -1,3 +1,5 @@
 ![](../images/header.jpg)
 
-# Introduction to electric vehicle system modeling
+# Introduction à la modélisation système des véhicules électriques
+
+*Introduction to electric vehicle system modeling*
