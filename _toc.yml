@@ -13,8 +13,18 @@ parts:
 - caption: Motorisation
   chapters:
   - file: notebook/01a_PowerTrain
-  - file: notebook/01b_Mesure_surface_goupil
+
+- caption: Convertisseurs statiques
+  chapters:
+  - file: notebook/02a_Chopper
+  
+ - caption: Batterie
+  chapters:
+  - file: notebook/03a_Battery
       
+ - caption: Refroidissement
+  chapters:
+  - file: notebook/04a_Cooling
 
       
       
