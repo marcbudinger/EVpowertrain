@@ -69,7 +69,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="shortcut icon" href="../_static/logo.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="&lt;no title&gt;" href="01b_Mesure_surface_goupil.html" />
+    <link rel="next" title="Simulation d’un hacheur" href="02a_Chopper.html" />
     <link rel="prev" title="Architecture système d’un véhicule électrique" href="00_Introduction.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -176,6 +176,18 @@ const thebe_selector_output = ".output, .cell_output"
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Motorisation</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Sélection d’une motorisation</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Convertisseurs statiques</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="02a_Chopper.html">Simulation d’un hacheur</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Batterie</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="03a_Battery.html">Simulation d’une batterie de véhicule électrique</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Refroidissement</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="04a_Cooling.html">Simulation de la thermique véhicule</a></li>
 </ul>
 
     </div>
@@ -439,9 +451,10 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#presentation-des-caracteristiques-du-vehicule">Présentation des caractéristiques du véhicule</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modelisation-de-la-dynamique-longitudinale">Modélisation de la dynamique longitudinale</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modelisation-de-la-transmission-de-puissance">Modélisation de la transmission de puissance**</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modelisation-de-la-transmission-de-puissance">Modélisation de la transmission de puissance</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation-dun-profil-dutilisation">Simulation d’un profil d’utilisation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#selection-dun-moteur">Sélection d’un moteur</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation-du-moteur">Simulation du moteur</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">Références</a></li>
 </ul>
             </nav>
@@ -458,11 +471,11 @@ document.write(`
 <h1>Sélection d’une motorisation<a class="headerlink" href="#selection-dune-motorisation" title="Permalink to this heading">#</a></h1>
 <section id="presentation-des-caracteristiques-du-vehicule">
 <h2>Présentation des caractéristiques du véhicule<a class="headerlink" href="#presentation-des-caracteristiques-du-vehicule" title="Permalink to this heading">#</a></h2>
-<p>Le <a class="reference external" href="https://www.goupil-ev.com/fr/">Goupil</a> G4 (<strong>Figure 1</strong>) est un petit utilitaire électrique urbain, utilisé par les villes et les entreprises pour déplacer de petites charges sur de courtes distances (livraison, entretien de parcs, services techniques).</p>
-<p><em>Figure 1 – Véhicule utilitaire électrique Goupil</em><br />
+<p>Le <a class="reference external" href="https://www.goupil-ev.com/fr/">Goupil</a> G4 est un petit utilitaire électrique urbain, utilisé par les villes et les entreprises pour déplacer de petites charges sur de courtes distances (livraison, entretien de parcs, services techniques).</p>
+<p><em>Véhicule utilitaire électrique Goupil</em><br />
 <img alt="Véhicule utilitaire électrique Goupil G4 Long 9 kWh Lithium 2 CV" src="../_images/GoupilG4.jpg" /></p>
-<p>L’objectif de ce problème est de simuler la dynamique longitudinale du véhicule et sa transmission de puissance afin de sélectionner une motorisation électrique. Le <strong>Tableau 1</strong> donne les principales caractéristiques des différents composants mécaniques du Goupil G4.</p>
-<p><em>Tableau 1 – Caractéristiques générales du Goupil G4 et de ses composants mécaniques</em></p>
+<p>L’objectif de ce problème est de simuler la dynamique longitudinale du véhicule et sa transmission de puissance afin de sélectionner une motorisation électrique. Les tableaux suivants donne les principales caractéristiques des différents composants mécaniques du Goupil G4.</p>
+<p><em>Caractéristiques générales du Goupil G4 et de ses composants mécaniques</em></p>
 <table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Caractéristiques générales</p></th>
@@ -547,12 +560,12 @@ document.write(`
 </section>
 <section id="modelisation-de-la-dynamique-longitudinale">
 <h2>Modélisation de la dynamique longitudinale<a class="headerlink" href="#modelisation-de-la-dynamique-longitudinale" title="Permalink to this heading">#</a></h2>
-<p>Un modèle mécanique longitudinal [<span class="xref myst">DUYSINX, 2020</span>] permet d’estimer la puissance motrice nécessaire pour assurer certains points de fonctionnement du véhicule. Il peut servir également de base pour prédire des consommations énergétiques sur cycles.</p>
+<p>Un modèle mécanique longitudinal [<span class="xref myst">DUYSINX, 2020</span>] permet d’estimer la puissance motrice nécessaire pour assurer certains points de fonctionnement du véhicule. Il peut servir également de base pour prédire des consommations énergétiques sur cycles d’utilisation.</p>
 <blockquote>
 <div><p><strong>Question :</strong> Proposez un diagramme 0D/1D et donnez les équations correspondantes permettant de modéliser la dynamique du Goupil en translation en prenant notamment en compte les forces suivantes:</p>
 <ul class="simple">
-<li><p>L’inertie en translation du Goupil et du conducteur;</p></li>
-<li><p>L’effet de la gravité dans une pente;</p></li>
+<li><p>L’inertie en translation du Goupil et du conducteur ;</p></li>
+<li><p>L’effet de la gravité dans une pente ;</p></li>
 <li><p>Les efforts aérodynamiques
 <span class="math notranslate nohighlight">\(F_{aero} = \frac{1}{2}.\rho_{air}C_{x}S.v^{2} \approx 0.5061.v^{2}\)</span> en N où <em>v</em> correspond à la vitesse du Goupil en m/s ;</p></li>
 <li><p>Les efforts de résistance au roulement proportionnels à l’effort     normal sur les roues et au coefficient de résistance de roulement <em>C<sub>rr</sub></em> des pneus. Sur route, avec un gonflage adéquat, on considèrera <em>C<sub>rr</sub></em> = 100.10<sup>-4</sup>.</p></li>
@@ -565,12 +578,16 @@ document.write(`
 <li><p>dans <em>Modelica/Mechanics/Translational/</em> les sources d’effort (<em>Sources/Force</em>) et composants de type inertie ou frottement (<em>Components/Mass, Components/SupportFriction</em>);</p></li>
 <li><p>dans <em>Modelica/Blocks/Math</em> : <em>Sum, Product, Gain, Atan, Sin, …</em></p></li>
 </ul>
+<p><em>Composants Modelica</em>
+<img alt="Test Goupil" src="../_images/Composants.png" /></p>
 <blockquote>
 <div><p><strong>Question :</strong> Calculez analytiquement l’effort à fournir pour obtenir en régime permanent une vitesse <em>v</em> = 30 km/h sur une pente de 7%. Validez par simulation ce résultat en utilisant le modèle <em>TestGoupil</em>.</p>
 </div></blockquote>
+<p><em>Modèle “TestGoupil”</em>
+<img alt="Test Goupil" src="notebook/figures/TestGoupil.png" /></p>
 </section>
 <section id="modelisation-de-la-transmission-de-puissance">
-<h2>Modélisation de la transmission de puissance**<a class="headerlink" href="#modelisation-de-la-transmission-de-puissance" title="Permalink to this heading">#</a></h2>
+<h2>Modélisation de la transmission de puissance<a class="headerlink" href="#modelisation-de-la-transmission-de-puissance" title="Permalink to this heading">#</a></h2>
 <p>L’ensemble des deux réducteurs (différentiel et à pignons droits) peut se représenter par un réducteur équivalent présentant les caractéristiques suivantes :  inertie sur l’axe rapide 0,57 kg.cm<sup>2</sup>, rapport de réduction global 14.87, rendement global de 88%. Les effets des raideurs ne sont pas pris en compte ici.</p>
 <blockquote>
 <div><p><strong>Question :</strong>  Calculez analytiquement pour le point opérationnel précédent (vitesse constante de 30 km/h, pente de 7%):</p>
@@ -585,6 +602,8 @@ document.write(`
 <blockquote>
 <div><p><strong>Question :</strong>   Calculez la masse équivalente des inerties des roues et du réducteur. Conclure quant à leurs impacts sur la dynamique du système. Retrouvez ce résultat sur le modèle <em>TestSlopeMotor.</em></p>
 </div></blockquote>
+<p><em>Modèle “TestSlopeMotor”</em>
+<img alt="TestSlopeMotor" src="notebook/figures/TestSlopeMotor.png" /></p>
 </section>
 <section id="simulation-dun-profil-dutilisation">
 <h2>Simulation d’un profil d’utilisation<a class="headerlink" href="#simulation-dun-profil-dutilisation" title="Permalink to this heading">#</a></h2>
@@ -593,6 +612,8 @@ document.write(`
 <li><p>le bloc <em>SpeedTable</em> fournit l’évolution du profil de vitesse au cours du temps</p></li>
 <li><p>le bloc <em>SlopeTable</em> founrit l’évolution de la pente en fonction de la position du véhicule.</p></li>
 </ul>
+<p><em>Modèle “TestProfile_Cycle”</em><br />
+<img alt="Test Profile Cycle" src="../_images/CycleGoupil.png" /></p>
 <blockquote>
 <div><p><strong>Question:</strong> Relevez la puissance maximale à fournir par le moteur pour réaliser cette mission et le couple RMS en fin de cycle.   Établissez le profil vitesse de rotation et couple moteur pour réaliser ce cycle.</p>
 </div></blockquote>
@@ -601,18 +622,148 @@ document.write(`
 </section>
 <section id="selection-dun-moteur">
 <h2>Sélection d’un moteur<a class="headerlink" href="#selection-dun-moteur" title="Permalink to this heading">#</a></h2>
-<p>Nous souhaitons utiliser un moteur IP54 CH6 de la marque ABB. A partir du <strong>Tableau 4</strong> et du <strong>Graphe 1</strong>.</p>
+<p>Nous souhaitons utiliser un moteur à courant continu de la marque Lynch Motor.</p>
 <blockquote>
-<div><p><em>Question:</em> Sélectionnez une configuration de bobinage (<em>Speed 1, 2, 3, 5, 7</em> pour un prototype de ce véhicule ?</p>
+<div><p><strong>Question:</strong> Sélectionnez un moteur pour un prototype de ce véhicule.</p>
 </div></blockquote>
-<p><strong>Remarque</strong> : Pour une même architecture de moteur, jouer sur le nombre de spires du bobinage (et de ce fait sur sa section) permet d’obtenir des caractéristiques de moteur différentes.</p>
+<p><em>Gamme de moteurs continus (48 V) de la marque <span class="xref myst">Lynch motor</span></em></p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Moteur</p></th>
+<th class="head"><p>Constante de couple (N.m/A)</p></th>
+<th class="head"><p>Résistance (mOhm)</p></th>
+<th class="head"><p>Inductance (µH)</p></th>
+<th class="head"><p>Inertie (kg.m²)</p></th>
+<th class="head"><p>Courant max (A)</p></th>
+<th class="head"><p>Courant nominal (A)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>LEM 130</p></td>
+<td><p>0.0631</p></td>
+<td><p>32.5</p></td>
+<td><p>14</p></td>
+<td><p>0.0116</p></td>
+<td><p>100</p></td>
+<td><p>75</p></td>
+</tr>
+<tr class="row-odd"><td><p>LEM 170</p></td>
+<td><p>0.12</p></td>
+<td><p>24</p></td>
+<td><p>23</p></td>
+<td><p>0.0238</p></td>
+<td><p>400</p></td>
+<td><p>140</p></td>
+</tr>
+<tr class="row-even"><td><p>LEM 240</p></td>
+<td><p>0.21</p></td>
+<td><p>12.41</p></td>
+<td><p>32</p></td>
+<td><p>0.0327</p></td>
+<td><p>360</p></td>
+<td><p>300</p></td>
+</tr>
+</tbody>
+</table>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="c1"># Donnees constructeur</span>
+<span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Moteur&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;LEM 130&#39;</span><span class="p">,</span> <span class="s1">&#39;LEM 170&#39;</span><span class="p">,</span> <span class="s1">&#39;LEM 240&#39;</span><span class="p">],</span>
+        <span class="s1">&#39;K (N.m/A)&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.0631</span><span class="p">,</span> <span class="mf">0.12</span><span class="p">,</span> <span class="mf">0.21</span><span class="p">],</span>
+        <span class="s1">&#39;R (Ohm)&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">32.5e-3</span><span class="p">,</span> <span class="mf">24e-3</span><span class="p">,</span> <span class="mf">14.41e-3</span><span class="p">],</span>
+        <span class="s1">&#39;Imax (A)&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">100</span><span class="p">,</span><span class="mi">400</span><span class="p">,</span><span class="mi">360</span><span class="p">],</span>
+        <span class="s1">&#39;Inom (A)&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">75</span><span class="p">,</span><span class="mi">140</span><span class="p">,</span><span class="mi">300</span><span class="p">]</span>
+       <span class="p">}</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+<span class="c1"># Calcul des limites operationnelles</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;Max speed (rpm)&#39;</span><span class="p">]</span><span class="o">=</span><span class="mi">48</span><span class="o">/</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;K (N.m/A)&#39;</span><span class="p">]</span><span class="o">*</span><span class="mi">60</span><span class="o">/</span><span class="mi">2</span><span class="o">/</span><span class="mf">3.14</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;Max Torque (N.m)&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;K (N.m/A)&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Imax (A)&#39;</span><span class="p">]</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;Mean Torque (N.m)&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;K (N.m/A)&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Inom (A)&#39;</span><span class="p">]</span>
+
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Moteur</th>
+      <th>K (N.m/A)</th>
+      <th>R (Ohm)</th>
+      <th>Imax (A)</th>
+      <th>Inom (A)</th>
+      <th>Max speed (rpm)</th>
+      <th>Max Torque (N.m)</th>
+      <th>Mean Torque (N.m)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>LEM 130</td>
+      <td>0.0631</td>
+      <td>0.03250</td>
+      <td>100</td>
+      <td>75</td>
+      <td>7267.808655</td>
+      <td>6.31</td>
+      <td>4.7325</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>LEM 170</td>
+      <td>0.1200</td>
+      <td>0.02400</td>
+      <td>400</td>
+      <td>140</td>
+      <td>3821.656051</td>
+      <td>48.00</td>
+      <td>16.8000</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>LEM 240</td>
+      <td>0.2100</td>
+      <td>0.01441</td>
+      <td>360</td>
+      <td>300</td>
+      <td>2183.803458</td>
+      <td>75.60</td>
+      <td>63.0000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="simulation-du-moteur">
+<h2>Simulation du moteur<a class="headerlink" href="#simulation-du-moteur" title="Permalink to this heading">#</a></h2>
+<p>On suppose ici que l’électronique de puissance contrôlant le moteur peut s’assimiler à une source de tension (limitée à 48V maximum). Cette source de tension peut également être controlée en courant en ajoutant un capteur de courant et une boucle d’asservissement.</p>
 <blockquote>
-<div><p><img alt="notebook/attachment:media/image2.png" src="notebook/attachment:media/image2.png" /></p>
+<div><p><strong>Question:</strong> Ajouter aux modèles précedent le moteur à courant continu sélectionné. Simulez le moteur en alimentation tension et en alimentation courant. Imposez la tension maximale ou le courant maximal sous la forme d’un échelon qui s’annule après 50s sur une configuratoin de pente nulle. Quelle type d’alimentation vous semble la plus judicieuse ?</p>
 </div></blockquote>
-<p><strong>Tableau 2</strong>*– Moteurs asynchrones de la marque ABB</p>
-<p><img alt="notebook/attachment:media/image3.png" src="notebook/attachment:media/image3.png" /></p>
-<p><strong>Graphe 1</strong> <em>–</em> Profils d’utilisation des moteurs des différentes
-configuration moteur</p>
+<p><em>Modèle “TestMotor”</em><br />
+<img alt="Test Profile Cycle" src="notebook/figures/VoltageCurrentMotor.png" /></p>
 </section>
 <section id="references">
 <h2>Références<a class="headerlink" href="#references" title="Permalink to this heading">#</a></h2>
@@ -660,11 +811,11 @@ configuration moteur</p>
       </div>
     </a>
     <a class="right-next"
-       href="01b_Mesure_surface_goupil.html"
+       href="02a_Chopper.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">&lt;no title&gt;</p>
+        <p class="prev-next-title">Simulation d’un hacheur</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -685,9 +836,10 @@ configuration moteur</p>
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#presentation-des-caracteristiques-du-vehicule">Présentation des caractéristiques du véhicule</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modelisation-de-la-dynamique-longitudinale">Modélisation de la dynamique longitudinale</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modelisation-de-la-transmission-de-puissance">Modélisation de la transmission de puissance**</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modelisation-de-la-transmission-de-puissance">Modélisation de la transmission de puissance</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation-dun-profil-dutilisation">Simulation d’un profil d’utilisation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#selection-dun-moteur">Sélection d’un moteur</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation-du-moteur">Simulation du moteur</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">Références</a></li>
 </ul>
   </nav></div>
