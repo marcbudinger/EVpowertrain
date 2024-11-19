@@ -18,11 +18,11 @@ parts:
   chapters:
   - file: notebook/02a_Chopper
   
- - caption: Batterie
+- caption: Batterie
   chapters:
   - file: notebook/03a_Battery
       
- - caption: Refroidissement
+- caption: Refroidissement
   chapters:
   - file: notebook/04a_Cooling
 
