@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Simulation de la thermique véhicule &#8212; EV powertrain modeling</title>
+    <title>Motorisation des véhicules électriques &#8212; EV powertrain modeling</title>
   
   
   
@@ -63,11 +63,12 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'notebook/04a_Cooling';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebook/01a_MotorPanorama';</script>
     <link rel="shortcut icon" href="../_static/logo.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="prev" title="Simulation d’une batterie de véhicule électrique" href="03a_Battery.html" />
+    <link rel="next" title="Sélection d’une motorisation" href="01b_PowerTrain.html" />
+    <link rel="prev" title="Architecture système d’un véhicule électrique" href="00_Introduction.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -171,8 +172,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="00_Introduction.html">Architecture système d’un véhicule électrique</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Motorisation</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="01a_MotorPanorama.html">Motorisation des véhicules électriques</a></li>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Motorisation des véhicules électriques</a></li>
 <li class="toctree-l1"><a class="reference internal" href="01b_PowerTrain.html">Sélection d’une motorisation</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Convertisseurs statiques</span></p>
@@ -185,8 +186,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="03a_Battery.html">Simulation d’une batterie de véhicule électrique</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Refroidissement</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Simulation de la thermique véhicule</a></li>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="04a_Cooling.html">Simulation de la thermique véhicule</a></li>
 </ul>
 
     </div>
@@ -241,7 +242,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://mybinder.org/v2/gh/marcbudinger/EVpowertrain/main?urlpath=lab/tree/notebook/04a_Cooling.ipynb" target="_blank"
+      <li><a href="https://mybinder.org/v2/gh/marcbudinger/EVpowertrain/main?urlpath=lab/tree/notebook/01a_MotorPanorama.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
    title="Launch onBinder"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -259,7 +260,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://colab.research.google.com/github/marcbudinger/EVpowertrain/blob/main/notebook/04a_Cooling.ipynb" target="_blank"
+      <li><a href="https://colab.research.google.com/github/marcbudinger/EVpowertrain/blob/main/notebook/01a_MotorPanorama.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
    title="Launch onColab"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -307,7 +308,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/marcbudinger/EVpowertrain/edit/main/notebook/04a_Cooling.ipynb" target="_blank"
+      <li><a href="https://github.com/marcbudinger/EVpowertrain/edit/main/notebook/01a_MotorPanorama.ipynb" target="_blank"
    class="btn btn-sm btn-source-edit-button dropdown-item"
    title="Suggest edit"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -324,7 +325,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/marcbudinger/EVpowertrain/issues/new?title=Issue%20on%20page%20%2Fnotebook/04a_Cooling.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/marcbudinger/EVpowertrain/issues/new?title=Issue%20on%20page%20%2Fnotebook/01a_MotorPanorama.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -354,7 +355,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="../_sources/notebook/04a_Cooling.ipynb" target="_blank"
+      <li><a href="../_sources/notebook/01a_MotorPanorama.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -438,7 +439,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Simulation de la thermique véhicule</h1>
+    <h1>Motorisation des véhicules électriques</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -448,9 +449,12 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cricuit-de-refroidissement">Cricuit de refroidissement</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modelisation-thermique-des-composants-en-convection-naturelle">Modélisation thermique des composants en convection naturelle</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#circuit-de-refroidissement-liquide">Circuit de refroidissement liquide</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#classification-des-motorisations-de-vehicules-electriques">Classification des motorisations de véhicules électriques</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#moteurs-a-courant-continu">Moteurs à courant continu</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#moteurs-synchrones">Moteurs synchrones</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#moteurs-asynchrones">Moteurs asynchrones</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#topologie-des-differents-technologies-de-moteurs">Topologie des différents technologies de moteurs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">Références</a></li>
 </ul>
             </nav>
         </div>
@@ -462,17 +466,84 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="simulation-de-la-thermique-vehicule">
-<h1>Simulation de la thermique véhicule<a class="headerlink" href="#simulation-de-la-thermique-vehicule" title="Permalink to this heading">#</a></h1>
-<section id="cricuit-de-refroidissement">
-<h2>Cricuit de refroidissement<a class="headerlink" href="#cricuit-de-refroidissement" title="Permalink to this heading">#</a></h2>
-<p><a class="reference external" href="https://www.hella.com/techworld/fr/Technique/Climatisation/Gestion-thermique-dans-les-vehicules-electriques-et-hybrides-1725/#">https://www.hella.com/techworld/fr/Technique/Climatisation/Gestion-thermique-dans-les-vehicules-electriques-et-hybrides-1725/#</a></p>
+  <section class="tex2jax_ignore mathjax_ignore" id="motorisation-des-vehicules-electriques">
+<h1>Motorisation des véhicules électriques<a class="headerlink" href="#motorisation-des-vehicules-electriques" title="Permalink to this heading">#</a></h1>
+<section id="classification-des-motorisations-de-vehicules-electriques">
+<h2>Classification des motorisations de véhicules électriques<a class="headerlink" href="#classification-des-motorisations-de-vehicules-electriques" title="Permalink to this heading">#</a></h2>
+<p>Les motorisations électriques pour voitures se classent en quatre grandes catégories :</p>
+<ul class="simple">
+<li><p>Moteurs à courant continu (DC) : Historiques, comme les moteurs à balais ou à excitation série. Simples à contrôler, mais moins efficaces et nécessitant un entretien régulier.</p></li>
+<li><p>Moteurs synchrones à aimants permanents (PMSM) : Très répandus, offrant un haut rendement et un couple élevé, mais coûteux en raison des aimants.</p></li>
+<li><p>Moteurs asynchrones (induction) : Robustes, sans aimants, moins coûteux, et utilisés dans des véhicules comme les premières Tesla.</p></li>
+<li><p>Moteurs synchrones à reluctance commutée : Prometteurs, sans aimants, efficaces et durables, mais encore émergents.</p></li>
+</ul>
+<p><em>Figure - Classification des moteurs de véhicules électrique</em>
+<img alt="Test Goupil" src="../_images/ClassificationEVdrives.PNG" /></p>
 </section>
-<section id="modelisation-thermique-des-composants-en-convection-naturelle">
-<h2>Modélisation thermique des composants en convection naturelle<a class="headerlink" href="#modelisation-thermique-des-composants-en-convection-naturelle" title="Permalink to this heading">#</a></h2>
+<section id="moteurs-a-courant-continu">
+<h2>Moteurs à courant continu<a class="headerlink" href="#moteurs-a-courant-continu" title="Permalink to this heading">#</a></h2>
+<p>Bien que les moteurs à courant continu à balais soient aujourd’hui largement remplacés par des moteurs synchrones à aimants permanents ou des moteurs asynchrones, ils ont joué un rôle important dans les premières applications de la propulsion électrique. Dans les années 1990, certaines premières versions de véhicules électriques, comme les premiers prototypes de la GM EV1, la Berlingo ou la peugeot 106 ont utilisé des moteurs à courant continu à balais. Ces moteurs présentaient plusieurs avantages pour cette époque :</p>
+<ul class="simple">
+<li><p>Simplicité de contrôle : Les moteurs à courant continu sont faciles à contrôler grâce à des variateurs relativement simples.</p></li>
+<li><p>Couple élevé à basse vitesse : Le couple maximal est disponible dès le démarrage, ce qui est idéal pour les applications automobiles.</p></li>
+<li><p>Technologie bien maîtrisée : À l’époque, les moteurs à courant continu étaient largement utilisés dans l’industrie, ce qui réduisait les coûts et les risques techniques.</p></li>
+</ul>
+<p>Cependant, ces moteurs avaient aussi des inconvénients notables :</p>
+<ul class="simple">
+<li><p>Usure des balais : Les balais nécessitent un entretien régulier et limitent la durée de vie du moteur.</p></li>
+<li><p>Rendement limité : Les pertes dues aux frottements des balais et la dissipation thermique dans le collecteur rendent ces moteurs moins efficaces.</p></li>
+<li><p>Dimensions et poids : Par rapport aux moteurs modernes, ils étaient plus volumineux pour une même puissance.</p></li>
+</ul>
+<p><em>Groupe de propulsion électrique <a class="reference external" href="https://fr.wikipedia.org/wiki/Centre_technique_Stellantis_de_Carri%C3%A8res-sous-Poissy">PSA</a></em>
+<img alt="GMP PSA" src="../_images/PSA-LeroySomer.JPG" /></p>
+<blockquote>
+<div><p><strong>Groupe de propulsion électrique PSA</strong> : 20 kW à 5 500 tr/min, moteur à courant continu SA13 de Leroy-Somer, permettant une vitesse de 91 km/h, avec un ratio fixe ; En arrière en haut: accumulateur nickel-cadmium de Saft : capacité 100 ampères-heures, 120 volts, 300 kg ; durable et résistant au froid. Au devant, bloc électronique Sagem pilotant le moteur, la gestion des charges normales via un chargeur embarqué de 3 kW ou rapides via une station externe (20 min à 130 A). Pour Peugeot 106, Citroën Saxo (les deux best-sellers), Citroën AX, Citroën Berlingo et Peugeot Partner (moteur SA18 de Leroy-Somer), soit un total de plus de 10 000 exemplaires.</p>
+</div></blockquote>
+<p><em>Moteur et variateur du <a class="reference external" href="http://boursinp.free.fr/velec/pdf/ciberl.pdf">Berlingo Electrique</a></em>
+<img alt="Moteur" src="../_images/GMPBerlingo.PNG" />
+<img alt="GMP PSA" src="../_images/VariateurBerlingo.PNG" /></p>
+<blockquote>
+<div><p><strong>Question:</strong> La Citroën Berlingo Electrique était équipée d’un moteur à courant continu à excitation séparée. Expliquer l’intérêt de cette configuration.</p>
+</div></blockquote>
 </section>
-<section id="circuit-de-refroidissement-liquide">
-<h2>Circuit de refroidissement liquide<a class="headerlink" href="#circuit-de-refroidissement-liquide" title="Permalink to this heading">#</a></h2>
+<section id="moteurs-synchrones">
+<h2>Moteurs synchrones<a class="headerlink" href="#moteurs-synchrones" title="Permalink to this heading">#</a></h2>
+<p>LUn moteur synchrone à aimants permanents (PMSM) est constitué d’un rotor équipé d’aimants permanents et d’un stator comportant des bobinages alimentés par un courant triphasé. Le champ magnétique des aimants interagit avec celui généré par le stator pour produire un couple de rotation. Il est alimenté par un onduleur triphasé.
+Principaux avantages :</p>
+<ul class="simple">
+<li><p>Haut rendement : Faibles pertes électriques grâce à l’absence de courant induit dans le rotor.</p></li>
+<li><p>Couple élevé : Disponible dès le démarrage, idéal pour les véhicules électriques.</p></li>
+<li><p>Compacité : Une densité de puissance élevée permet de réduire le poids et l’encombrement.</p></li>
+<li><p>Maintenance réduite : Pas de balais ni de collecteurs à usure rapide.</p></li>
+</ul>
+<p>C’est la technologie dominante dans les voitures modernes.</p>
+<p><em>Principaux composants d’une motorisation de voiture moderne [<span class="xref myst">Matallana, 2019</span>]</em>
+<img alt="Moteur" src="../_images/PowerModuleInverter.PNG" /></p>
+</section>
+<section id="moteurs-asynchrones">
+<h2>Moteurs asynchrones<a class="headerlink" href="#moteurs-asynchrones" title="Permalink to this heading">#</a></h2>
+<p>Un moteur asynchrone (ou à induction) est constitué d’un stator avec des bobinages alimentés par un courant alternatif triphasé et d’un rotor en cage d’écureuil (barres conductrices entourées de courts-circuits). Le champ magnétique tournant du stator induit des courants dans le rotor, générant un couple de rotation.
+Principaux avantages :</p>
+<ul class="simple">
+<li><p>Robustesse : Absence d’aimants ou de balais, réduisant les risques de défaillance.</p></li>
+<li><p>Coût modéré : Pas de terres rares, contrairement aux moteurs à aimants permanents.</p></li>
+<li><p>Fiabilité : Résistant aux variations de température et aux environnements difficiles.</p></li>
+<li><p>Simplicité de construction : Facilité de fabrication et d’entretien.</p></li>
+</ul>
+<p>Ces moteurs sont souvent utilisés pour leur durabilité, comme sur les premières Tesla.</p>
+</section>
+<section id="topologie-des-differents-technologies-de-moteurs">
+<h2>Topologie des différents technologies de moteurs<a class="headerlink" href="#topologie-des-differents-technologies-de-moteurs" title="Permalink to this heading">#</a></h2>
+<blockquote>
+<div><p><strong>Questions</strong>: La figure ci-dessous représente les principales  topologies de moteurs électriques pour véhicules électrique (Moteurs à courant continu (DC), Moteurs synchrones à aimants permanents (PMSM), Moteurs asynchrones (induction), Moteurs synchrones à reluctance). Indiquer leur type, la nature et la position des matériaux utilisés (aimants permanents, tôles en fer magnétique, bobinages en fils de cuivre, barre conductrice en cuivre ou aluminum), leur principe d’alimentation.</p>
+</div></blockquote>
+<p><em>Figure - Principales topologies des moteurs de voitures électriques</em>
+<img alt="Topolgie" src="../_images/Motors.PNG" /></p>
+</section>
+<section id="references">
+<h2>Références<a class="headerlink" href="#references" title="Permalink to this heading">#</a></h2>
+<p>[Chau, 2008] Chau, K. T., Chan, C. C., &amp; Liu, C. (2008). Overview of permanent-magnet brushless drives for electric and hybrid electric vehicles. IEEE Transactions on industrial electronics, 55(6), 2246-2257. <a class="reference external" href="https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=4451077">Link</a></p>
+<p>[Matallana, 2019] Matallana, A., Ibarra, E., López, I., Andreu, J., Garate, J. I., Jordà, X., &amp; Rebollo, J. (2019). Power module electronics in HEV/EV applications: New trends in wide-bandgap semiconductor technologies and design aspects. Renewable and Sustainable Energy Reviews, 113, 109264. <a class="reference external" href="https://www.sciencedirect.com/science/article/pii/S1364032119304721">Link</a></p>
 </section>
 </section>
 
@@ -507,13 +578,22 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="03a_Battery.html"
+       href="00_Introduction.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Simulation d’une batterie de véhicule électrique</p>
+        <p class="prev-next-title">Architecture système d’un véhicule électrique</p>
       </div>
+    </a>
+    <a class="right-next"
+       href="01b_PowerTrain.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Sélection d’une motorisation</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>
@@ -530,9 +610,12 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cricuit-de-refroidissement">Cricuit de refroidissement</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modelisation-thermique-des-composants-en-convection-naturelle">Modélisation thermique des composants en convection naturelle</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#circuit-de-refroidissement-liquide">Circuit de refroidissement liquide</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#classification-des-motorisations-de-vehicules-electriques">Classification des motorisations de véhicules électriques</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#moteurs-a-courant-continu">Moteurs à courant continu</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#moteurs-synchrones">Moteurs synchrones</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#moteurs-asynchrones">Moteurs asynchrones</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#topologie-des-differents-technologies-de-moteurs">Topologie des différents technologies de moteurs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">Références</a></li>
 </ul>
   </nav></div>
 
