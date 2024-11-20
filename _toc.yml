@@ -12,11 +12,13 @@ parts:
 
 - caption: Motorisation
   chapters:
-  - file: notebook/01a_PowerTrain
+  - file: notebook/01a_MotorPanorama 
+  - file: notebook/01b_PowerTrain
 
 - caption: Convertisseurs statiques
   chapters:
-  - file: notebook/02a_Chopper
+  - file: notebook/02a_ConverterPanorama
+  - file: notebook/02b_Chopper
   
 - caption: Batterie
   chapters:
