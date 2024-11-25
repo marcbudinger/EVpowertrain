@@ -627,9 +627,6 @@ document.write(`
 <section id="selection-dun-moteur">
 <h2>Sélection d’un moteur<a class="headerlink" href="#selection-dun-moteur" title="Permalink to this heading">#</a></h2>
 <p>Nous souhaitons utiliser un moteur à courant continu de la marque Lynch Motor.</p>
-<blockquote>
-<div><p><strong>Question:</strong> Sélectionnez un moteur pour un prototype de ce véhicule.</p>
-</div></blockquote>
 <p><em>Gamme de moteurs continus (48 V) de la marque <span class="xref myst">Lynch motor</span></em></p>
 <table class="table">
 <thead>
@@ -669,9 +666,18 @@ document.write(`
 </tr>
 </tbody>
 </table>
+<blockquote>
+<div><p><strong>Question:</strong> Sélectionnez un moteur pour un prototype de ce véhicule.</p>
+</div></blockquote>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;tags&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;hide-input&quot;</span><span class="p">,</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 
 <span class="c1"># Donnees constructeur</span>
 <span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Moteur&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;LEM 130&#39;</span><span class="p">,</span> <span class="s1">&#39;LEM 170&#39;</span><span class="p">,</span> <span class="s1">&#39;LEM 240&#39;</span><span class="p">],</span>
