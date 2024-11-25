@@ -8,7 +8,8 @@ parts:
 
 - caption: Introduction
   chapters:
-  - file: notebook/00_Introduction
+  - file: notebook/00a_IntroductionSNBC
+  - file: notebook/00b_IntroductionGMP
 
 - caption: Motorisation
   chapters:
