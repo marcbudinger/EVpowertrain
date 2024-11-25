@@ -493,12 +493,37 @@ document.write(`
 </ul>
 <p>Le tableau suivante résume les principales hypothèses de modélisation, les formalismes de représentation de chacun de ces niveaux de modèles.</p>
 <p><em>Niveaux de modélisation</em></p>
-<p>|Type de modèle	| Représentation de l’espace | Représentation du temps	| Formalismes ou types d’équations |<br />
-| -:- | -:- | -:- | -:- |<br />
-| Fonctionnel	|Discret |	Discret |	Réseaux de pétri, automate fini (finite state machine en anglais) |
-|Signal	Discret |	Continu |	Equations Différentielles Ordinaires (ODE en anglais) |<br />
-|Réseau	Discret	 | Continu |	Equations Algébro-Différentielles (ADE en anglais) |<br />
-|Géométrique |	Continu |	Continu |	Equations aux Dérivées Partielles (PDE en anglais) |</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p>Type de modèle</p></th>
+<th class="head text-center"><p>Représentation de l’espace</p></th>
+<th class="head text-center"><p>Représentation du temps</p></th>
+<th class="head text-center"><p>Formalismes ou types d’équations</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p>Fonctionnel</p></td>
+<td class="text-center"><p>Discret</p></td>
+<td class="text-center"><p>Discret</p></td>
+<td class="text-center"><p>Réseaux de pétri, automate fini (finite state machine en anglais)</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>Signal</p></td>
+<td class="text-center"><p>Discret</p></td>
+<td class="text-center"><p>Continu</p></td>
+<td class="text-center"><p>Equations Différentielles Ordinaires (ODE en anglais)</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>Réseau</p></td>
+<td class="text-center"><p>Discret</p></td>
+<td class="text-center"><p>Continu</p></td>
+<td class="text-center"><p>Equations Algébro-Différentielles (ADE en anglais)</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>Géométrique</p></td>
+<td class="text-center"><p>Continu</p></td>
+<td class="text-center"><p>Continu</p></td>
+<td class="text-center"><p>Equations aux Dérivées Partielles (PDE en anglais)</p></td>
+</tr>
+</tbody>
+</table>
 <p>Par la suite nous allons nous intéresser plus particulièrement au niveau de modélisation réseau qui permet d’avoir une représentation globale du système, complémentaire de la vision locale du niveau géométrique. On l’appelle également la représentation réseau modélisation multi-physique à paramètres localisés ou encore simulation 0D/1D.</p>
 </section>
 <section id="parametres-localises">
