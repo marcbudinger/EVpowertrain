@@ -504,11 +504,11 @@ document.write(`
 <section id="parametres-localises">
 <h2>Paramètres localisés<a class="headerlink" href="#parametres-localises" title="Permalink to this heading">#</a></h2>
 <p>La modélisation multi-physique à paramètres localisés passe par une distribution discrète des effets physiques élémentaires du système à décrire. Ce choix de représentation nécessite des hypothèses de modélisation qui sont du ressort de l’ingénieur et non du logiciel utilisé.</p>
-<p><em>Système masse-ressort : modélisations 3D et 0D-1D</em>
-<img alt="3D vs 0D/1D" src="notebook/figures/SpringMass3D1D.PNG" /></p>
+<p><em>Système masse-ressort : modélisations 3D et 0D-1D</em><br />
+<img alt="3D vs 0D/1D" src="../_images/SpringMass3D1D.png" /></p>
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
 <summary class="sd-summary-title sd-card-header">
-Passage d’une représentation 3D à une représentation 0D-1D:  <div class="sd-summary-down docutils">
+Passage d’une représentation 3D à une représentation 0D-1D    <div class="sd-summary-down docutils">
 <svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
 <div class="sd-summary-up docutils">
 <svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
@@ -526,7 +526,7 @@ La notion de causalité est liée à l’orientation de ces échanges d’inform
 <img alt="Masse ressort" src="../_images/ModeleCausalAcausal.png" /></p>
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
 <summary class="sd-summary-title sd-card-header">
-Causalité de différents outils de simulation<div class="sd-summary-down docutils">
+Causalité de différents outils de simulation  <div class="sd-summary-down docutils">
 <svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
 <div class="sd-summary-up docutils">
 <svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
@@ -543,7 +543,7 @@ Dans le cas de l’implémentation © sous Modelica, la causalité n’est pas i
 <img alt="Lois de Kirchoff" src="../_images/LoisKirchhoff.png" /></p>
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
 <summary class="sd-summary-title sd-card-header">
-Lois de Kirchhoff<div class="sd-summary-down docutils">
+Lois de Kirchhoff  <div class="sd-summary-down docutils">
 <svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
 <div class="sd-summary-up docutils">
 <svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
@@ -581,9 +581,9 @@ Effets élémentaires<div class="sd-summary-down docutils">
 <div class="sd-summary-up docutils">
 <svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
 </summary><div class="sd-summary-content sd-card-body docutils">
-<p class="sd-card-text">Une <strong>source idéale</strong> permet d’imposer une variable de puissance quelle que soit la valeur de la variable de puissance complémentaire : une source de tension impose ainsi une tension quel que soit le courant.
-Un effet <strong>« transformateur »</strong> permet un transfert de puissance sans perte et sans stockage dans un même domaine, comme représenté Tableau 2, ou entre différents domaines. Les transformateurs correspondent au comportement idéal de nombreux composants technologiques de transmissions de puissance : réducteur, moteur électrique, vérin hydraulique, …  Ils sont caractérisés par 2 équations liant les 4 variables de puissance caractéristiques des interfaces.
-Un <strong>élément de stockage</strong> n’est caractérisé que par 2 variables de puissance , comme la tension et le courant de l’inductance du schéma. Ce type d’élément est caractérisé par des puissances absorbées, produit des 2 variables de puissance, pouvant être positive comme négative et de valeur moyenne nulle comme mesurée lors d’une simulation pour une alimentation sinusoïdale. Ces éléments sont donc sans pertes mais peuvent stocker de l’énergie.
+<p class="sd-card-text">Une <strong>source idéale</strong> permet d’imposer une variable de puissance quelle que soit la valeur de la variable de puissance complémentaire : une source de tension impose ainsi une tension quel que soit le courant.<br />
+Un effet <strong>« transformateur »</strong> permet un transfert de puissance sans perte et sans stockage dans un même domaine, comme représenté Tableau 2, ou entre différents domaines. Les transformateurs correspondent au comportement idéal de nombreux composants technologiques de transmissions de puissance : réducteur, moteur électrique, vérin hydraulique, …  Ils sont caractérisés par 2 équations liant les 4 variables de puissance caractéristiques des interfaces.<br />
+Un <strong>élément de stockage</strong> n’est caractérisé que par 2 variables de puissance , comme la tension et le courant de l’inductance du schéma. Ce type d’élément est caractérisé par des puissances absorbées, produit des 2 variables de puissance, pouvant être positive comme négative et de valeur moyenne nulle comme mesurée lors d’une simulation pour une alimentation sinusoïdale. Ces éléments sont donc sans pertes mais peuvent stocker de l’énergie.<br />
 Un <strong>élément dissipateur</strong> ne stocke pas d’énergie et dissipe sous forme de chaleur l’intégralité de la puissance qui lui est fournie.</p>
 </div>
 </details></section>
