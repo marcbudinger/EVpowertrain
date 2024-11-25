@@ -10,6 +10,7 @@ parts:
   chapters:
   - file: notebook/00a_IntroductionSNBC
   - file: notebook/00b_IntroductionGMP
+  - file: notebook/00c_IntroductionSysteme
 
 - caption: Motorisation
   chapters:
