@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Motorisation des véhicules électriques &#8212; EV powertrain modeling</title>
+    <title>Motorisation : panorama &#8212; EV powertrain modeling</title>
   
   
   
@@ -68,7 +68,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Sélection d’une motorisation" href="01b_PowerTrain.html" />
-    <link rel="prev" title="Architecture système d’un véhicule électrique" href="00_Introduction.html" />
+    <link rel="prev" title="Groupe motopropulseur pour véhicules électriques" href="00b_IntroductionGMP.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -169,16 +169,17 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="00_Introduction.html">Architecture système d’un véhicule électrique</a></li>
+<li class="toctree-l1"><a class="reference internal" href="00a_IntroductionSNBC.html">Empreinte carbone de la mobilité</a></li>
+<li class="toctree-l1"><a class="reference internal" href="00b_IntroductionGMP.html">Groupe motopropulseur pour véhicules électriques</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Motorisation</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Motorisation des véhicules électriques</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Motorisation : panorama</a></li>
 <li class="toctree-l1"><a class="reference internal" href="01b_PowerTrain.html">Sélection d’une motorisation</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Convertisseurs statiques</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="02a_ConverterPanorama.html">Simulation d’un hacheur</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02a_ConverterPanorama.html">Convertisseurs statiques : panorama</a></li>
 <li class="toctree-l1"><a class="reference internal" href="02b_Chopper.html">Simulation d’un hacheur</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Batterie</span></p>
@@ -439,7 +440,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Motorisation des véhicules électriques</h1>
+    <h1>Motorisation : panorama</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -466,8 +467,8 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="motorisation-des-vehicules-electriques">
-<h1>Motorisation des véhicules électriques<a class="headerlink" href="#motorisation-des-vehicules-electriques" title="Permalink to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="motorisation-panorama">
+<h1>Motorisation : panorama<a class="headerlink" href="#motorisation-panorama" title="Permalink to this heading">#</a></h1>
 <section id="classification-des-motorisations-de-vehicules-electriques">
 <h2>Classification des motorisations de véhicules électriques<a class="headerlink" href="#classification-des-motorisations-de-vehicules-electriques" title="Permalink to this heading">#</a></h2>
 <p>Les motorisations électriques pour voitures se classent en quatre grandes catégories :</p>
@@ -477,7 +478,7 @@ document.write(`
 <li><p>Moteurs asynchrones (induction) : Robustes, sans aimants, moins coûteux, et utilisés dans des véhicules comme les premières Tesla.</p></li>
 <li><p>Moteurs synchrones à reluctance commutée : Prometteurs, sans aimants, efficaces et durables, mais encore émergents.</p></li>
 </ul>
-<p><em>Figure - Classification des moteurs de véhicules électrique</em>
+<p><em>Figure - Classification des moteurs de véhicules électriques [<span class="xref myst">Chau, 2008</span>]</em>
 <img alt="Test Goupil" src="../_images/ClassificationEVdrives.PNG" /></p>
 </section>
 <section id="moteurs-a-courant-continu">
@@ -508,8 +509,8 @@ document.write(`
 </section>
 <section id="moteurs-synchrones">
 <h2>Moteurs synchrones<a class="headerlink" href="#moteurs-synchrones" title="Permalink to this heading">#</a></h2>
-<p>LUn moteur synchrone à aimants permanents (PMSM) est constitué d’un rotor équipé d’aimants permanents et d’un stator comportant des bobinages alimentés par un courant triphasé. Le champ magnétique des aimants interagit avec celui généré par le stator pour produire un couple de rotation. Il est alimenté par un onduleur triphasé.
-Principaux avantages :</p>
+<p>LUn moteur synchrone à aimants permanents (PMSM) est constitué d’un rotor équipé d’aimants permanents et d’un stator comportant des bobinages alimentés par un courant triphasé. Le champ magnétique des aimants interagit avec celui généré par le stator pour produire un couple de rotation. Il est alimenté par un onduleur triphasé.</p>
+<p>Principaux avantages :</p>
 <ul class="simple">
 <li><p>Haut rendement : Faibles pertes électriques grâce à l’absence de courant induit dans le rotor.</p></li>
 <li><p>Couple élevé : Disponible dès le démarrage, idéal pour les véhicules électriques.</p></li>
@@ -522,8 +523,8 @@ Principaux avantages :</p>
 </section>
 <section id="moteurs-asynchrones">
 <h2>Moteurs asynchrones<a class="headerlink" href="#moteurs-asynchrones" title="Permalink to this heading">#</a></h2>
-<p>Un moteur asynchrone (ou à induction) est constitué d’un stator avec des bobinages alimentés par un courant alternatif triphasé et d’un rotor en cage d’écureuil (barres conductrices entourées de courts-circuits). Le champ magnétique tournant du stator induit des courants dans le rotor, générant un couple de rotation.
-Principaux avantages :</p>
+<p>Un moteur asynchrone (ou à induction) est constitué d’un stator avec des bobinages alimentés par un courant alternatif triphasé et d’un rotor en cage d’écureuil (barres conductrices entourées de courts-circuits). Le champ magnétique tournant du stator induit des courants dans le rotor, générant un couple de rotation.</p>
+<p>Principaux avantages :</p>
 <ul class="simple">
 <li><p>Robustesse : Absence d’aimants ou de balais, réduisant les risques de défaillance.</p></li>
 <li><p>Coût modéré : Pas de terres rares, contrairement aux moteurs à aimants permanents.</p></li>
@@ -537,7 +538,7 @@ Principaux avantages :</p>
 <blockquote>
 <div><p><strong>Questions</strong>: La figure ci-dessous représente les principales  topologies de moteurs électriques pour véhicules électrique (Moteurs à courant continu (DC), Moteurs synchrones à aimants permanents (PMSM), Moteurs asynchrones (induction), Moteurs synchrones à reluctance). Indiquer leur type, la nature et la position des matériaux utilisés (aimants permanents, tôles en fer magnétique, bobinages en fils de cuivre, barre conductrice en cuivre ou aluminum), leur principe d’alimentation.</p>
 </div></blockquote>
-<p><em>Figure - Principales topologies des moteurs de voitures électriques</em>
+<p><em>Figure - Principales topologies des moteurs de voitures électriques [<span class="xref myst">Chau, 2008</span>]</em>
 <img alt="Topolgie" src="../_images/Motors.PNG" /></p>
 </section>
 <section id="references">
@@ -578,12 +579,12 @@ Principaux avantages :</p>
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="00_Introduction.html"
+       href="00b_IntroductionGMP.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Architecture système d’un véhicule électrique</p>
+        <p class="prev-next-title">Groupe motopropulseur pour véhicules électriques</p>
       </div>
     </a>
     <a class="right-next"
