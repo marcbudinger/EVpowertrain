@@ -454,6 +454,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#principe-de-la-commutation">Principe de la commutation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#principaux-types-de-convertisseurs">Principaux types de convertisseurs</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modules-de-puissance">Modules de puissance</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">Références</a></li>
 </ul>
             </nav>
         </div>
@@ -469,20 +470,52 @@ document.write(`
 <h1>Convertisseurs statiques : panorama<a class="headerlink" href="#convertisseurs-statiques-panorama" title="Permalink to this heading">#</a></h1>
 <section id="principe-de-la-commutation">
 <h2>Principe de la commutation<a class="headerlink" href="#principe-de-la-commutation" title="Permalink to this heading">#</a></h2>
-</section>
+<p>La modulation de puissance par commutation est une technique utilisée en électronique de puissance pour convertir et réguler l’énergie électrique en activant et désactivant rapidement des interrupteurs électroniques (comme des transistors ou des thyristors). Cette méthode permet de contrôler efficacement la tension, le courant et la puissance en minimisant les pertes par conduction et commutation, car les interrupteurs fonctionnent majoritairement en mode bloqué ou saturé (faibles pertes). Comparée aux régulations linéaires, elle améliore considérablement l’efficacité énergétique et permet une densité de puissance plus élevée grâce à des composants plus compacts et à des fréquences de commutation élevées, réduisant la taille des filtres et des composants magnétiques associés.</p>
+<p><em>Cellule de commutation</em><br />
+<img alt="Cellule de commutation" src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Commutation_cell_practical_theroretical.svg/350px-Commutation_cell_practical_theroretical.svg.png" /></p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Principe de fonctionnement    <div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">La cellule de commutation est le circuit de base en électronique de puissance constitué de deux interrupteurs, généralement un transistor et une diode, souvent associés à des éléments de stockage d’énergie comme une inductance ou un condensateur. Son rôle est d’alterner entre des états de conduction et de blocage, permettant ainsi de transférer de l’énergie entre des sources (entrée/sortie). La cellule de commutation doit respecter les règles suivantes:</p>
+<ul class="simple">
+<li><p class="sd-card-text">si connectés à une source de tension (par exemple un condensateur), les 2 interrupeturs ne pourront être fermés en même temps sous peine de créer un court-circuit et de détériorer le matériel.</p></li>
+<li><p class="sd-card-text">de même si la cellule est connectée à une source de courant (par exemple une inductance), il n’est pas possible d’ouvrir les deux interrupteurs en même temps sous peine d’avoir une surtension egalement destructrice.</p></li>
+</ul>
+</div>
+</details></section>
 <section id="principaux-types-de-convertisseurs">
 <h2>Principaux types de convertisseurs<a class="headerlink" href="#principaux-types-de-convertisseurs" title="Permalink to this heading">#</a></h2>
 <p>Les véhicules électriques utilisent plusieurs types de convertisseurs pour gérer l’énergie électrique :</p>
 <ul class="simple">
-<li><p>Convertisseur DC-DC : Abaisse ou élève la tension entre la batterie de forte puissance et les systèmes basse tension (12V) pour alimenter les accessoires (éclairage, électronique) ou le bus continu de motorisation.</p></li>
-<li><p>Onduleur DC-AC : Convertit le courant continu de la batterie en courant alternatif pour alimenter le moteur électrique. Lors du freinage, il récupère l’énergie cinétique en la convertissant en énergie électrique pour recharger la batterie.</p></li>
-<li><p>Convertisseur AC-DC : Présent dans le chargeur embarqué, il transforme le courant alternatif du réseau en courant continu pour recharger la batterie.</p></li>
+<li><p><strong>Convertisseur DC-DC</strong> : Abaisse ou élève la tension entre la batterie de forte puissance et les systèmes basse tension (12V) pour alimenter les accessoires (éclairage, électronique) ou le bus continu de motorisation.</p></li>
+<li><p><strong>Onduleur DC-AC</strong> : Convertit le courant continu de la batterie en courant alternatif pour alimenter le moteur électrique. Lors du freinage, il récupère l’énergie cinétique en la convertissant en énergie électrique pour recharger la batterie.</p></li>
+<li><p><strong>Convertisseur AC-DC</strong> : Présent dans le chargeur embarqué, il transforme le courant alternatif du réseau en courant continu pour recharger la batterie. Les structures de chargeurs peuvent être <a class="reference external" href="https://www.mdpi.com/2079-9292/12/20/4295">variées</a>.</p></li>
 </ul>
 <p><em>Principaux convertisseurs statiques d’une PRIUS</em>
 <img alt="Convertisseurs Prius" src="../_images/PriusConverters.png" /></p>
+<blockquote>
+<div><p><strong>Question</strong>: identifier les convertisseurs A, B et C.</p>
+</div></blockquote>
 </section>
 <section id="modules-de-puissance">
 <h2>Modules de puissance<a class="headerlink" href="#modules-de-puissance" title="Permalink to this heading">#</a></h2>
+<p>L’onduleur d’une voiture électrique est un dispositif clé permettant de convertir la tension continue de la batterie en tension alternative pour alimenter le moteur. Sa composition technologique se fait à partir de modules techologiques fortement intégrés :</p>
+<ul class="simple">
+<li><p><strong>Modules de puissance IGBT</strong> (Insulated Gate Bipolar Transistor) : Ces composants servent d’interrupteurs rapides, permettant de moduler la tension continue en créant une tension alternative grâce à une technique de modulation de largeur d’impulsion (PWM). Chaque module contient plusieurs IGBT intégrés avec leurs diodes de roue libre.</p></li>
+<li><p><strong>Drivers de commande</strong> : Ces circuits contrôlent l’ouverture et la fermeture des IGBT en appliquant des signaux précis à leurs grilles. Ils assurent également une isolation électrique entre le circuit de commande et le circuit de puissance, souvent via des optocoupleurs ou des transformateurs.</p></li>
+<li><p><strong>Condensateurs</strong> : Positionnés en amont du circuit, ils servent de filtre pour lisser la tension continue de la batterie, réduire les ondulations et limiter les variations de courant dans les modules IGBT, augmentant leur fiabilité.</p></li>
+</ul>
+<p>Ces composants sont intégrés sur une carte de puissance, souvent refroidie par un système thermique (air ou liquide) pour dissiper la chaleur générée, et contrôlés par une unité centrale qui adapte la fréquence et l’amplitude de la tension alternative en fonction des besoins du moteur.</p>
+<p><em>Exemple d’onduleur de forte puissance [<span class="xref myst">Nordelof, 2019</span>] [<a class="reference external" href="https://www.powersystemsdesign.com/articles/increasing-inverter-efficiency/18/11434">EPCOS</a>] [<a class="reference external" href="https://www.infineon.com/cms/de/product/evaluation-boards/ev-inv-hpd1-si-fs820-08/">INFINEON</a>]</em>
+<img alt="Onduleur" src="../_images/InverterCar.png" /></p>
+</section>
+<section id="references">
+<h2>Références<a class="headerlink" href="#references" title="Permalink to this heading">#</a></h2>
+<p>[Nordelof, 2019] Nordelöf, A., Alatalo, M., &amp; Söderman, M. L. (2019). A scalable life cycle inventory of an automotive power electronic inverter unit—part I: design and composition. The International Journal of Life Cycle Assessment, 24, 78-92. <a class="reference external" href="https://link.springer.com/article/10.1007/s11367-018-1503-3">Link</a></p>
 </section>
 </section>
 
@@ -552,6 +585,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#principe-de-la-commutation">Principe de la commutation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#principaux-types-de-convertisseurs">Principaux types de convertisseurs</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modules-de-puissance">Modules de puissance</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">Références</a></li>
 </ul>
   </nav></div>
 
