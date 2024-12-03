@@ -63,6 +63,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'notebook/02b_Chopper';</script>
     <link rel="shortcut icon" href="../_static/logo.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -451,8 +453,8 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#convertisseur-statique-et-motorisation-electrique">Convertisseur statique et motorisation électrique</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation-dun-convertisseur-dc-dc-a-decoupage">Simulation d’un convertisseur DC/DC à découpage</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ondulation-de-courant">Ondulation de courant</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modele-moyen-de-hacheur">Modèle moyen de hacheur</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calcul-des-pertes-en-conduction-et-commutation">Calcul des pertes en conduction et commutation</a></li>
 </ul>
@@ -468,17 +470,128 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="simulation-dun-hacheur">
 <h1>Simulation d’un hacheur<a class="headerlink" href="#simulation-dun-hacheur" title="Permalink to this heading">#</a></h1>
-<section id="convertisseur-statique-et-motorisation-electrique">
-<h2>Convertisseur statique et motorisation électrique<a class="headerlink" href="#convertisseur-statique-et-motorisation-electrique" title="Permalink to this heading">#</a></h2>
-</section>
+<p><em>Ecrit par Marc BUDINGER, INSA Toulouse</em></p>
+<p>Nous allons ici simuler un hacheur de contrôle moteur avec différents niveaux de fidélité et de représentativité.</p>
 <section id="simulation-dun-convertisseur-dc-dc-a-decoupage">
 <h2>Simulation d’un convertisseur DC/DC à découpage<a class="headerlink" href="#simulation-dun-convertisseur-dc-dc-a-decoupage" title="Permalink to this heading">#</a></h2>
+<p>Nous supposerons que le convertisseur est une cellule de commutation dans une configuration de hacheur dévolteur comme représenté dans la figure ci-dessous. La source de tension représente la batterie du véhicule, la charge RLE le moteur électrique à courant continu.</p>
+<p><em>Cellule de commmutation en <a class="reference external" href="http://physiquenetappliquee.free.fr/hacheur.php">hacheur dévolteur</a></em><br />
+<img alt="Hacheur dévolteur" src="http://physiquenetappliquee.free.fr/photos_hach/hacheur_serie11.jpg" /></p>
+<blockquote>
+<div><p><em>Question :</em> Comment faut-il modifier ce convertisseur pour pouvoir réaliser du freinage récupératif ou une marche arrière ?</p>
+</div></blockquote>
+<blockquote>
+<div><p><em>Exercice :</em> Simuler le fichier <code class="docutils literal notranslate"><span class="pre">HacheurPWM</span></code> du fichier <span class="xref myst">fourni</span> et analyser les formes d’ondes en courant en en tension.</p>
+</div></blockquote>
+<p><em>Modèle Modelica</em><br />
+<img alt="Hacheur" src="../_images/HacheurPWMModelica.PNG" /></p>
+</section>
+<section id="ondulation-de-courant">
+<h2>Ondulation de courant<a class="headerlink" href="#ondulation-de-courant" title="Permalink to this heading">#</a></h2>
+<p>L’inductance du moteur limite l’ondulation du courant. Les figures suivantes représentent l’évolution transitoire des courants et des tensions au niveau de cette inductance.</p>
+<p><em>Evolution temporelle du courant</em>
+<img alt="CurrentRipple" src="../_images/CurrentRipple.png" /></p>
+<blockquote>
+<div><p><strong>Question:</strong> Montrer que l’ondulation de courant peut être exprimées par la relations <span class="math notranslate nohighlight">\(\Delta I=\frac{E(1-\alpha)\alpha T}{L}\)</span></p>
+</div></blockquote>
+<blockquote>
+<div><p><strong>Exercice :</strong> Tracer l’évolution de l’ondulations de courant en fonction du rapport cyclique. Quel est le point de fonctionnement le plus critique ?</p>
+</div></blockquote>
+<p>Pour les calculs suivants, ce rapport cyclique critique sera supposé.</p>
+<blockquote>
+<div><p><em>Question :</em> Expliciter l’intérêt de l’ajout d’une inductance de filtrage dans la configuration simulée précédente. Proposer une valeur d’inductance permettant de limiter l’ondulation de courant à 10%. Vérifier par simulation.</p>
+</div></blockquote>
+<p><em>Inductance de <a class="reference external" href="https://www.circe-technologies.com/selfs-de-filtrage.html">filtrage</a></em><br />
+<img alt="Self de lissage" src="https://www.circe-technologies.com/media/4297/medium/self-de-filtrage.webp" /></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">alpha</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1000</span><span class="p">)</span>
+<span class="n">ripple</span><span class="o">=</span><span class="n">alpha</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">alpha</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">alpha</span><span class="p">,</span><span class="n">ripple</span><span class="p">)</span>  
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;Duty cycle $\alpha$ [-]&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$\frac{\Delta IL}</span><span class="si">{ET}</span><span class="s1">$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The critical duty cycle is: </span><span class="si">%.2f</span><span class="s1">&#39;</span><span class="o">%</span><span class="p">(</span><span class="n">alpha</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">ripple</span><span class="p">)]))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/7eb584782df24296ebd64c9d82466f1baeb595c8502cabcca85803485d2fbff5.png" src="../_images/7eb584782df24296ebd64c9d82466f1baeb595c8502cabcca85803485d2fbff5.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The critical duty cycle is: 0.50
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="modele-moyen-de-hacheur">
 <h2>Modèle moyen de hacheur<a class="headerlink" href="#modele-moyen-de-hacheur" title="Permalink to this heading">#</a></h2>
+<p>La représentation temporelle du hachage de la tension implique un coût de calcul important car il est nécessaire de représenter finement chaque période de découpage. Il est souvent plus judicieux pour simuler des profils de mission mécanique d’utiliser un mdèle moyen de convertisseur.</p>
+<blockquote>
+<div><p><strong>Question :</strong> Analyser les formes d’ondes et proposer une relation permettant de calculer la tension moyenne en sortie du hacheur. Completer la section <em>equation</em> du modèle <code class="docutils literal notranslate"><span class="pre">transfo_controlled</span></code> du fichier fourni. Tester ce modèle à l’aide du modèle <code class="docutils literal notranslate"><span class="pre">Hacheur_Mean</span></code>.</p>
+</div></blockquote>
 </section>
 <section id="calcul-des-pertes-en-conduction-et-commutation">
 <h2>Calcul des pertes en conduction et commutation<a class="headerlink" href="#calcul-des-pertes-en-conduction-et-commutation" title="Permalink to this heading">#</a></h2>
+<p>Les pertes dans les composants de puissance, comme les IGBT ou les MOSFET, se répartissent principalement en pertes par conduction et pertes par commutation :</p>
+<ul class="simple">
+<li><p><strong>Pertes par conduction :</strong> Elles se produisent lorsque le transistor est passant (ON). Elles sont dues à la résistance interne du composant (Rds(on) pour les MOSFET ou la tension Vce(sat) pour les IGBT). La puissance dissipée est fonction courant qui traverse le transistor :<br />
+<span class="math notranslate nohighlight">\(P_{cond}=R_{ds(on)}I^2\)</span> (MOSFET) ou <span class="math notranslate nohighlight">\(P_{cond}=V_{ce(sat)}I=V_0I+R_0I^2\)</span> (IGBT).</p></li>
+<li><p><strong>Pertes par commutation :</strong> Elles surviennent lors du passage entre les états ON et OFF. Pendant ces transitions, la tension et le courant ne sont pas simultanément nuls, créant une dissipation énergétique. La puissance dissipée dépend de la fréquence de commutation, des temps de montée et de descente du signal, et des caractéristiques capacitives du transistor. La perte totale est donnée par :<br />
+<span class="math notranslate nohighlight">\(P_{com}=1/2⋅V⋅I⋅(t_{rise}+t_{fall})f_{switch} = (E_{on}+E_{off})f_{switch}\)</span><br />
+, où <span class="math notranslate nohighlight">\(f_{switch}\)</span> est la fréquence de commutation.</p></li>
+</ul>
+<p>Le tableaux suivants synthétise les équations qui permettent de calculer les pertes dans le principaux composants du convertisseur.</p>
+<p><em>Grandeurs nécessaires aux calculs de pertes dans un convertisseur DC/DC</em></p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p></p></th>
+<th class="head text-center"><p>Inductance</p></th>
+<th class="head text-center"><p>IGBT</p></th>
+<th class="head text-center"><p>Diode</p></th>
+<th class="head text-center"><p>DC Capacitor</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p>Mean current</p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(I_L\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(\alpha I_L\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\((1-\alpha)I_L\)</span></p></td>
+<td class="text-center"><p>0</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>RMS current</p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(I_{L,RMS}\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(\sqrt{\alpha } I_{L,RMS}\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(\sqrt{1-\alpha } I_{L,RMS}\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(\sqrt{\alpha \left(1-\alpha \right)} I_{L,RMS}\)</span></p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>Conduction losses</p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(R_{L}I_{RMS}^{2}\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\({V_{0}}{I_{mean}}+R_{0}I_{RMS}^{2}\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\({V_{0}}{I_{mean}}+R_{0}I_{RMS}^{2}\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(R_{S}I_{RMS}^{2}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>Commutation losse</p></td>
+<td class="text-center"><p>0</p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(f(E_{on}+E_{off})\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(\frac{1}{8} f I_{RM} E t_{rr}\)</span></p></td>
+<td class="text-center"><p>0</p></td>
+</tr>
+</tbody>
+</table>
+<p>avec : <span class="math notranslate nohighlight">\(I_{L,RMS}=I_{L}\sqrt{1+\frac{1}{12}\left(\frac{\Delta I_{L}}{I_{L}}\right)^{2}}\)</span></p>
+<blockquote>
+<div><p><strong>Question :</strong> Expliquer commant les valeurs moyennes et RMS du courant ont été calculées. Rappeler les hypothèses de calculs liant ces formules à l’explication des pertes du début du paragraphe.</p>
+</div></blockquote>
+<blockquote>
+<div><p><strong>Exercice :</strong> Analyser le modèle <code class="docutils literal notranslate"><span class="pre">Hacheur_Mean_Losses</span></code>. Paramétrer le modèle avec les informations disponibles dans les documents constructeurs : <a class="reference external" href="https://www.arcel.fr/fr/transistors-mosfet/725-IXFN420N10T.html">Transistor MOS</a>, <span class="xref myst">DC capacitor</span>.</p>
+</div></blockquote>
+<p><em>Simulation du profil de pertes du convertisseur DC/DC</em><br />
+<img alt="Hacheur avec pertes" src="notebook/figures/HacheurMean_Losses.png" /></p>
 </section>
 </section>
 
@@ -545,8 +658,8 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#convertisseur-statique-et-motorisation-electrique">Convertisseur statique et motorisation électrique</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation-dun-convertisseur-dc-dc-a-decoupage">Simulation d’un convertisseur DC/DC à découpage</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ondulation-de-courant">Ondulation de courant</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modele-moyen-de-hacheur">Modèle moyen de hacheur</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calcul-des-pertes-en-conduction-et-commutation">Calcul des pertes en conduction et commutation</a></li>
 </ul>
