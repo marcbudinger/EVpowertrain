@@ -172,7 +172,7 @@ const thebe_selector_output = ".output, .cell_output"
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="00a_IntroductionSNBC.html">Empreinte carbone de la mobilité</a></li>
-<li class="toctree-l1"><a class="reference internal" href="00b_IntroductionGMP.html">Groupe motopropulseur pour véhicules électriques</a></li>
+<li class="toctree-l1"><a class="reference internal" href="00b_IntroductionGMP.html">Groupes motopropulseurs pour véhicules électriques</a></li>
 <li class="toctree-l1"><a class="reference internal" href="00c_IntroductionSysteme.html">Simulation système</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Motorisation</span></p>
@@ -476,7 +476,7 @@ document.write(`
 <h2>Simulation d’un convertisseur DC/DC à découpage<a class="headerlink" href="#simulation-dun-convertisseur-dc-dc-a-decoupage" title="Permalink to this heading">#</a></h2>
 <p>Nous supposerons que le convertisseur est une cellule de commutation dans une configuration de hacheur dévolteur comme représenté dans la figure ci-dessous. La source de tension représente la batterie du véhicule, la charge RLE le moteur électrique à courant continu.</p>
 <p><em>Cellule de commmutation en <a class="reference external" href="http://physiquenetappliquee.free.fr/hacheur.php">hacheur dévolteur</a></em><br />
-<img alt="Hacheur dévolteur" src="http://physiquenetappliquee.free.fr/photos_hach/hacheur_serie11.jpg" /></p>
+<img alt="Hacheur dévolteur" src="../_images/hacheur_serie11.jpg" /></p>
 <blockquote>
 <div><p><em>Question :</em> Comment faut-il modifier ce convertisseur pour pouvoir réaliser du freinage récupératif ou une marche arrière ?</p>
 </div></blockquote>
@@ -498,7 +498,7 @@ document.write(`
 <div><p><strong>Exercice :</strong> Tracer l’évolution de l’ondulations de courant en fonction du rapport cyclique. Quel est le point de fonctionnement le plus critique ?</p>
 </div></blockquote>
 <p>Pour les calculs suivants, ce rapport cyclique critique sera supposé.</p>
-<div class="cell tag_{ tag_&quot;tags&quot;: tag_[ tag_&quot;hide-input&quot; tag_] tag_} docutils container">
+<div class="cell tag_{ tag_&quot;tags&quot;: tag_[ tag_] tag_} tag_&quot;hide-cell&quot; docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -516,6 +516,9 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Matplotlib is building the font cache; this may take a moment.
+</pre></div>
+</div>
 <img alt="../_images/7eb584782df24296ebd64c9d82466f1baeb595c8502cabcca85803485d2fbff5.png" src="../_images/7eb584782df24296ebd64c9d82466f1baeb595c8502cabcca85803485d2fbff5.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The critical duty cycle is: 0.50
 </pre></div>
@@ -530,7 +533,7 @@ document.write(`
 <blockquote>
 <div><p><strong>Question :</strong> En amont de la cellule de commutation, il est nécessaire d’ajouter un condensateur afin de limiter l’ondulation de tension : <span class="math notranslate nohighlight">\(\Delta V=\frac{I_{max}(1-\alpha)\alpha T}{C}\)</span>. Proposer un valeur de capacité limitant l’ondulation de tension à 10%.</p>
 </div></blockquote>
-<div class="cell tag_{ tag_&quot;tags&quot;: tag_[ tag_&quot;hide-input&quot; tag_] tag_} docutils container">
+<div class="cell tag_{ tag_&quot;tags&quot;: tag_[ tag_] tag_} tag_&quot;hide-cell&quot; docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calcul de l&#39;inductance et du condensateur</span>
 
