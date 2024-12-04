@@ -498,12 +498,7 @@ document.write(`
 <div><p><strong>Exercice :</strong> Tracer l’évolution de l’ondulations de courant en fonction du rapport cyclique. Quel est le point de fonctionnement le plus critique ?</p>
 </div></blockquote>
 <p>Pour les calculs suivants, ce rapport cyclique critique sera supposé.</p>
-<blockquote>
-<div><p><em>Question :</em> Expliciter l’intérêt de l’ajout d’une inductance de filtrage dans la configuration simulée précédente. Proposer une valeur d’inductance permettant de limiter l’ondulation de courant à 10%. Vérifier par simulation.</p>
-</div></blockquote>
-<p><em>Inductance de <a class="reference external" href="https://www.circe-technologies.com/selfs-de-filtrage.html">filtrage</a></em><br />
-<img alt="Self de lissage" src="https://www.circe-technologies.com/media/4297/medium/self-de-filtrage.webp" /></p>
-<div class="cell docutils container">
+<div class="cell tag_{ tag_&quot;tags&quot;: tag_[ tag_&quot;hide-input&quot; tag_] tag_} docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -527,10 +522,56 @@ document.write(`
 </div>
 </div>
 </div>
+<blockquote>
+<div><p><strong>Question :</strong> Expliciter l’intérêt de l’ajout d’une inductance de filtrage dans la configuration simulée précédente. Proposer une valeur d’inductance permettant de limiter l’ondulation de courant à 10%. Vérifier par simulation.</p>
+</div></blockquote>
+<p><em>Inductance de <a class="reference external" href="https://www.circe-technologies.com/selfs-de-filtrage.html">filtrage</a></em><br />
+<img alt="Self de lissage" src="https://www.circe-technologies.com/media/4297/medium/self-de-filtrage.webp" /></p>
+<blockquote>
+<div><p><strong>Question :</strong> En amont de la cellule de commutation, il est nécessaire d’ajouter un condensateur afin de limiter l’ondulation de tension : <span class="math notranslate nohighlight">\(\Delta V=\frac{I_{max}(1-\alpha)\alpha T}{C}\)</span>. Proposer un valeur de capacité limitant l’ondulation de tension à 10%.</p>
+</div></blockquote>
+<div class="cell tag_{ tag_&quot;tags&quot;: tag_[ tag_&quot;hide-input&quot; tag_] tag_} docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calcul de l&#39;inductance et du condensateur</span>
+
+<span class="c1"># Specification inductance</span>
+<span class="n">Inom</span><span class="o">=</span><span class="mi">140</span> <span class="c1"># [A] Courant nominal du moteur</span>
+<span class="n">E</span><span class="o">=</span><span class="mi">48</span> <span class="c1"># [V] Tension batterie</span>
+<span class="n">f</span><span class="o">=</span><span class="mf">10e3</span> <span class="c1"># [Hz] frequence de découpage</span>
+<span class="n">T</span><span class="o">=</span><span class="mi">1</span><span class="o">/</span><span class="n">f</span> <span class="c1"># [s] période de découpage</span>
+<span class="n">DI_I</span><span class="o">=</span><span class="mf">0.1</span> <span class="c1">#  [-] Ondulation de courant normalisée</span>
+
+<span class="n">DI</span><span class="o">=</span><span class="n">DI_I</span><span class="o">*</span><span class="n">Inom</span> <span class="c1"># [A] Ondulation de courant </span>
+
+<span class="c1"># Calcul de l&#39;inductance</span>
+<span class="n">L</span><span class="o">=</span><span class="n">E</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="mf">0.5</span><span class="p">)</span><span class="o">*</span><span class="mf">0.5</span><span class="o">*</span><span class="n">T</span><span class="o">/</span><span class="n">DI</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Inductance de filtrage : </span><span class="si">%.0f</span><span class="s2"> µH&quot;</span><span class="o">%</span><span class="p">(</span><span class="n">L</span><span class="o">/</span><span class="mf">1e-6</span><span class="p">))</span>
+
+<span class="c1"># Specification capacité</span>
+<span class="n">DV_V</span> <span class="o">=</span> <span class="mf">0.1</span>
+<span class="n">DV</span><span class="o">=</span><span class="n">DV_V</span><span class="o">*</span><span class="n">E</span> <span class="c1"># [V] Ondulation de tension</span>
+
+<span class="c1"># Calcul de la capacité </span>
+<span class="n">C</span><span class="o">=</span><span class="n">Inom</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="mf">0.5</span><span class="p">)</span><span class="o">*</span><span class="mf">0.5</span><span class="o">*</span><span class="n">T</span><span class="o">/</span><span class="n">DV</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Capacité de filtrage : </span><span class="si">%.0f</span><span class="s2"> µF&quot;</span><span class="o">%</span><span class="p">(</span><span class="n">C</span><span class="o">/</span><span class="mf">1e-6</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Courant RMS dans le condensateur: </span><span class="si">%.1f</span><span class="s2"> A &quot;</span><span class="o">%</span><span class="p">(((</span><span class="mi">1</span><span class="o">-</span><span class="mf">0.5</span><span class="p">)</span><span class="o">*</span><span class="mf">0.5</span><span class="p">)</span><span class="o">**</span><span class="mf">0.5</span><span class="o">*</span><span class="n">Inom</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Inductance de filtrage : 86 µH
+Capacité de filtrage : 729 µF
+Courant RMS dans le condensateur: 70.0 A 
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="modele-moyen-de-hacheur">
 <h2>Modèle moyen de hacheur<a class="headerlink" href="#modele-moyen-de-hacheur" title="Permalink to this heading">#</a></h2>
-<p>La représentation temporelle du hachage de la tension implique un coût de calcul important car il est nécessaire de représenter finement chaque période de découpage. Il est souvent plus judicieux pour simuler des profils de mission mécanique d’utiliser un mdèle moyen de convertisseur.</p>
+<p>La représentation temporelle du hachage de la tension implique un coût de calcul important car il est nécessaire de représenter finement chaque période de découpage. Il est souvent plus judicieux pour simuler des profils de mission mécanique d’utiliser un modèle moyen de convertisseur.</p>
 <blockquote>
 <div><p><strong>Question :</strong> Analyser les formes d’ondes et proposer une relation permettant de calculer la tension moyenne en sortie du hacheur. Completer la section <em>equation</em> du modèle <code class="docutils literal notranslate"><span class="pre">transfo_controlled</span></code> du fichier fourni. Tester ce modèle à l’aide du modèle <code class="docutils literal notranslate"><span class="pre">Hacheur_Mean</span></code>.</p>
 </div></blockquote>
@@ -588,10 +629,11 @@ document.write(`
 <div><p><strong>Question :</strong> Expliquer commant les valeurs moyennes et RMS du courant ont été calculées. Rappeler les hypothèses de calculs liant ces formules à l’explication des pertes du début du paragraphe.</p>
 </div></blockquote>
 <blockquote>
-<div><p><strong>Exercice :</strong> Analyser le modèle <code class="docutils literal notranslate"><span class="pre">Hacheur_Mean_Losses</span></code>. Paramétrer le modèle avec les informations disponibles dans les documents constructeurs : <a class="reference external" href="https://www.arcel.fr/fr/transistors-mosfet/725-IXFN420N10T.html">Transistor MOS</a>, <span class="xref myst">DC capacitor</span>.</p>
+<div><p><strong>Exercice :</strong> Analyser le modèle <code class="docutils literal notranslate"><span class="pre">Hacheur_Mean_Losses</span></code>. Paramétrer le modèle avec les informations disponibles dans les documents constructeurs : <a class="reference external" href="https://www.arcel.fr/fr/transistors-mosfet/725-IXFN420N10T.html">Transistor MOS</a>, <a class="reference external" href="https://www.tdk-electronics.tdk.com/inf/20/50/ds/B2562_.pdf">DC capacitor</a> et l’annexe sur l’<span class="xref myst">inductance</span>.</p>
 </div></blockquote>
 <p><em>Simulation du profil de pertes du convertisseur DC/DC</em><br />
-<img alt="Hacheur avec pertes" src="notebook/figures/HacheurMean_Losses.png" /></p>
+<img alt="Hacheur avec pertes" src="../_images/HacheurMean_Losses.PNG" /></p>
+<p><strong>Remarques</strong> : bien prendre garde au courant maximal efficace ou RMS que peut supporter le condensateur dénommé <span class="math notranslate nohighlight">\(Imax\)</span> dans le datasheet (Maximum rms current for continuous operation for the given frequency range and for the maximum ripple voltage).</p>
 </section>
 </section>
 
