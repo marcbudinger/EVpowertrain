@@ -24,7 +24,8 @@ parts:
   
 - caption: Batterie
   chapters:
-  - file: notebook/03a_Battery
+  - file: notebook/02a_BatteryPanorama
+  - file: notebook/03b_Battery
       
 - caption: Refroidissement
   chapters:
