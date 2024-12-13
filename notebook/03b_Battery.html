@@ -70,7 +70,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Simulation de la thermique véhicule" href="04a_Cooling.html" />
-    <link rel="prev" title="Simulation d’un hacheur" href="02b_Chopper.html" />
+    <link rel="prev" title="Batteries de traction : panorama" href="03a_BatteryPanorama.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -187,6 +187,7 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Batterie</span></p>
 <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="03a_BatteryPanorama.html">Batteries de traction : panorama</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Simulation d’une batterie de véhicule électrique</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Refroidissement</span></p>
@@ -453,7 +454,7 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pack-batteries-du-g4">Pack batteries du G4</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pack-batteries-du-goupil-g4">Pack batteries du Goupil G4</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tension-en-fonction-de-letat-de-charge">Tension en fonction de l’état de charge</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resistance-serie-et-phenomene-de-diffusion">Resistance série et phénomène de diffusion</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modelisation-de-la-reponse-thermique-dune-cellule">Modélisation de la réponse thermique d’une cellule</a></li>
@@ -473,11 +474,11 @@ document.write(`
   <section class="tex2jax_ignore mathjax_ignore" id="simulation-dune-batterie-de-vehicule-electrique">
 <h1>Simulation d’une batterie de véhicule électrique<a class="headerlink" href="#simulation-dune-batterie-de-vehicule-electrique" title="Permalink to this heading">#</a></h1>
 <p><em>Ecrit par Marc Budinger, INSA Toulouse, France</em></p>
-<section id="pack-batteries-du-g4">
-<h2>Pack batteries du G4<a class="headerlink" href="#pack-batteries-du-g4" title="Permalink to this heading">#</a></h2>
+<section id="pack-batteries-du-goupil-g4">
+<h2>Pack batteries du Goupil G4<a class="headerlink" href="#pack-batteries-du-goupil-g4" title="Permalink to this heading">#</a></h2>
 <p>Nous allons chercher à modéliser à modéliser le pack batteries de l’utilitaire Goupil G4. Les figures suivantes localisent cette batterie de traction dans le véhicule.</p>
-<p><em>Locacalisation de la batterie de traction du G4</em><br />
-<img alt="G4" src="notebook/figures/Cell2Pack.png" /></p>
+<p><em>Localisation de la batterie de traction du G4</em><br />
+<img alt="G4" src="../_images/Cell2Pack.PNG" /></p>
 <p>Les caracétristiques générales de la batterie sont :</p>
 <ul class="simple">
 <li><p>Tension nominale : 48V</p></li>
@@ -487,7 +488,7 @@ document.write(`
 <p>On supposere dans la suite du sujet que cette batterie est constituée de cellules LiFePO4 50Ah tels que décrite dans la thèse de [<span class="xref myst">Damay, 2015</span>]. La tension de la cellule varie entre 2.5 et 3.65 V pour une tension nominale de 3.22 V.</p>
 <p><em>Locacalisation de la batterie de traction du G4</em><br />
 <img alt="G4" src="../_images/Cell50Ah.png" /></p>
-<p>Le pack batterie est constitués de modules assemblage de ces cellules élémentaires.</p>
+<p>Le pack batterie est constitués de modules, assemblage de ces cellules élémentaires.</p>
 <p><em>Module</em><br />
 <img alt="G4" src="../_images/Module.png" /></p>
 <blockquote>
@@ -496,7 +497,7 @@ document.write(`
 </section>
 <section id="tension-en-fonction-de-letat-de-charge">
 <h2>Tension en fonction de l’état de charge<a class="headerlink" href="#tension-en-fonction-de-letat-de-charge" title="Permalink to this heading">#</a></h2>
-<p>Il est conventionnel de modéliser une batterie par une source de tension constante. Cette tension en circuite ouvert (OCV) varie en fonction de l’état de charge comme illustré sur la figure ci-dessous.</p>
+<p>Il est conventionnel de modéliser une batterie par une source de tension constante. Cette tension en circuit ouvert (OCV) varie en réalité en fonction de l’état de charge comme illustré sur la figure ci-dessous.</p>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -531,7 +532,7 @@ document.write(`
 </section>
 <section id="resistance-serie-et-phenomene-de-diffusion">
 <h2>Resistance série et phénomène de diffusion<a class="headerlink" href="#resistance-serie-et-phenomene-de-diffusion" title="Permalink to this heading">#</a></h2>
-<p>Une batterie n’est également pas une source de tension parfaire : une impédance série fait varier la tension observable au borne de le cellule en cas de charge et de décharge. La figure suivante représente un la réponse en tension à un échelon de courant de charge la réponse en tension à un créneau de courant de charge (mesure effectuée(#références) sur la cellule étudiée, à environ 50 % SoC, régime C/2, 32 °C).</p>
+<p>Une batterie n’est également pas une source de tension parfaite : une impédance série fait varier la tension observable au borne de le cellule en cas de charge ou de décharge. La figure suivante représente la réponse en tension à un créneau de courant de charge (mesure effectuée sur la cellule étudiée, à environ 50 % SoC, régime C/2, 32 °C).</p>
 <p><em>Réponse en tension à un créneau de courant [<span class="xref myst">Damay, 2015</span>]</em><br />
 <img alt="Chareg pulse" src="../_images/ChargePulse.png" /></p>
 <blockquote>
@@ -691,7 +692,7 @@ Rth = 1.10e+01 K/W
 <section id="modelisation-et-simulation-du-pack-batterie-complet">
 <h2>Modélisation et simulation du pack batterie complet<a class="headerlink" href="#modelisation-et-simulation-du-pack-batterie-complet" title="Permalink to this heading">#</a></h2>
 <blockquote>
-<div><p><strong>Exercice :</strong> Représenter sous Modelica la cellule, les modules et les associations de module en un pack représentatif de la batterie de tractin du goupil G4. Simuler la réponse électrique et thermique de ce pack sous le profil de mission de test.</p>
+<div><p><strong>Exercice :</strong> Représenter sous Modelica la cellule, les modules et les associations de module en un pack représentatif de la batterie de traction du goupil G4. Simuler la réponse électrique et thermique de ce pack sous le profil de mission de test.</p>
 </div></blockquote>
 </section>
 <section id="references">
@@ -735,12 +736,12 @@ Rth = 1.10e+01 K/W
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="02b_Chopper.html"
+       href="03a_BatteryPanorama.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Simulation d’un hacheur</p>
+        <p class="prev-next-title">Batteries de traction : panorama</p>
       </div>
     </a>
     <a class="right-next"
@@ -767,7 +768,7 @@ Rth = 1.10e+01 K/W
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pack-batteries-du-g4">Pack batteries du G4</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pack-batteries-du-goupil-g4">Pack batteries du Goupil G4</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tension-en-fonction-de-letat-de-charge">Tension en fonction de l’état de charge</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resistance-serie-et-phenomene-de-diffusion">Resistance série et phénomène de diffusion</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modelisation-de-la-reponse-thermique-dune-cellule">Modélisation de la réponse thermique d’une cellule</a></li>

@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Groupes motopropulseurs pour véhicules électriques &#8212; EV powertrain modeling</title>
+    <title>Batteries de traction : panorama &#8212; EV powertrain modeling</title>
   
   
   
@@ -63,12 +63,12 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'notebook/00b_IntroductionGMP';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebook/03a_BatteryPanorama';</script>
     <link rel="shortcut icon" href="../_static/logo.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Simulation système" href="00c_IntroductionSysteme.html" />
-    <link rel="prev" title="Empreinte carbone de la mobilité" href="00a_IntroductionSNBC.html" />
+    <link rel="next" title="Simulation d’une batterie de véhicule électrique" href="03b_Battery.html" />
+    <link rel="prev" title="Simulation d’un hacheur" href="02b_Chopper.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -168,9 +168,9 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../about/installation.html">Installation</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="00a_IntroductionSNBC.html">Empreinte carbone de la mobilité</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Groupes motopropulseurs pour véhicules électriques</a></li>
+<li class="toctree-l1"><a class="reference internal" href="00b_IntroductionGMP.html">Groupes motopropulseurs pour véhicules électriques</a></li>
 <li class="toctree-l1"><a class="reference internal" href="00c_IntroductionSysteme.html">Simulation système</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Motorisation</span></p>
@@ -184,8 +184,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="02b_Chopper.html">Simulation d’un hacheur</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Batterie</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="03a_BatteryPanorama.html">Batteries de traction : panorama</a></li>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Batteries de traction : panorama</a></li>
 <li class="toctree-l1"><a class="reference internal" href="03b_Battery.html">Simulation d’une batterie de véhicule électrique</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Refroidissement</span></p>
@@ -245,7 +245,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://mybinder.org/v2/gh/marcbudinger/EVpowertrain/main?urlpath=lab/tree/notebook/00b_IntroductionGMP.ipynb" target="_blank"
+      <li><a href="https://mybinder.org/v2/gh/marcbudinger/EVpowertrain/main?urlpath=lab/tree/notebook/03a_BatteryPanorama.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
    title="Launch onBinder"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -263,7 +263,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://colab.research.google.com/github/marcbudinger/EVpowertrain/blob/main/notebook/00b_IntroductionGMP.ipynb" target="_blank"
+      <li><a href="https://colab.research.google.com/github/marcbudinger/EVpowertrain/blob/main/notebook/03a_BatteryPanorama.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
    title="Launch onColab"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -311,7 +311,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/marcbudinger/EVpowertrain/edit/main/notebook/00b_IntroductionGMP.ipynb" target="_blank"
+      <li><a href="https://github.com/marcbudinger/EVpowertrain/edit/main/notebook/03a_BatteryPanorama.ipynb" target="_blank"
    class="btn btn-sm btn-source-edit-button dropdown-item"
    title="Suggest edit"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -328,7 +328,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/marcbudinger/EVpowertrain/issues/new?title=Issue%20on%20page%20%2Fnotebook/00b_IntroductionGMP.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/marcbudinger/EVpowertrain/issues/new?title=Issue%20on%20page%20%2Fnotebook/03a_BatteryPanorama.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -358,7 +358,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="../_sources/notebook/00b_IntroductionGMP.ipynb" target="_blank"
+      <li><a href="../_sources/notebook/03a_BatteryPanorama.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -442,7 +442,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Groupes motopropulseurs pour véhicules électriques</h1>
+    <h1>Batteries de traction : panorama</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -452,8 +452,9 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#principales-briques-technologiques">Principales briques technologiques</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#architecture-generale-dune-chaine-de-propulsion-electrique">Architecture générale d’une chaine de propulsion électrique</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#de-la-cellule-au-pack-batterie">De la cellule au pack batterie</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#notations-generales-associees-aux-batteries">Notations générales associées aux batteries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modelisation-systeme-dune-batterie">Modélisation système d’une batterie</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">Références</a></li>
 </ul>
             </nav>
@@ -466,44 +467,109 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="groupes-motopropulseurs-pour-vehicules-electriques">
-<h1>Groupes motopropulseurs pour véhicules électriques<a class="headerlink" href="#groupes-motopropulseurs-pour-vehicules-electriques" title="Permalink to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="batteries-de-traction-panorama">
+<h1>Batteries de traction : panorama<a class="headerlink" href="#batteries-de-traction-panorama" title="Permalink to this heading">#</a></h1>
 <p><em>Ecrit par Marc Budinger, INSA Toulouse, France</em></p>
-<p>Avant de concevoir, dimensionner ou modéliser un système, il est important de définir et de lister méticuleusement :</p>
+<section id="de-la-cellule-au-pack-batterie">
+<h2>De la cellule au pack batterie<a class="headerlink" href="#de-la-cellule-au-pack-batterie" title="Permalink to this heading">#</a></h2>
+<p>Les batteries de traction pour VE sont constituées de cellules regroupées selon une hiérarchie structurée :</p>
 <ul class="simple">
-<li><p>les composants de puissance à représenter ou dimensionner dans l’architecture</p></li>
-<li><p>les critères et paramètres utiles à la représentation des scénarios d’utilisation du système.</p></li>
+<li><p><strong>Cellules :</strong> Ce sont les unités élémentaires (cylindriques, prismatiques ou pouch) fournissant l’énergie.</p>
+<ul>
+<li><p>Cellules cylindriques (18650, 21700)</p></li>
+<li><p>Cellules prismatiques</p></li>
+<li><p>Cellules pouch (ou sachet)</p></li>
 </ul>
-<section id="principales-briques-technologiques">
-<h2>Principales briques technologiques<a class="headerlink" href="#principales-briques-technologiques" title="Permalink to this heading">#</a></h2>
-<p>Le groupe motopropulseur électrique des véhicules utilitaires légers électriques est basé sur :</p>
+</li>
+<li><p><strong>Modules :</strong>  Groupes de cellules organisées en configurations série, parallèle ou combinées (exemple : 10S2P). Le rôle du module est de faciliter l’assemblage et la maintenance. Il permet d’intégrer des capteurs pour surveiller la tension, le courant et la température et simplifie la gestion thermique et électrique.</p></li>
+<li><p><strong>Pack de batteries :</strong> Assemblage de plusieurs modules pour répondre aux besoins énergétiques et de puissance du véhicule. C’est lui qui fournit l’énergie nécessaire pour propulser le moteur électrique et alimenter les systèmes auxiliaires.</p></li>
+</ul>
+<p><em>Formes des cellules</em><br />
+<img alt="Formes des cellules" src="../_images/CellsFormats.png" /></p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Chimies des cellules    <div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">Les cellules de batteries utilisent différentes chimies, chacune ayant des avantages et des inconvénients en termes de densité énergétique, de durée de vie, de sécurité et de coût. Voici les principales chimies :</p>
 <ul class="simple">
-<li><p>une batterie</p></li>
-<li><p>un moteur synchrone à aimant permanent (PMSM Permanent Magnet Synchronous Machine) ou un moteur asynchrone (IM Induction Machine)</p></li>
-<li><p>un onduleur qui contrôle le flux d’énergie entre la batterie et le moteur</p></li>
-<li><p>une unité de commande du véhicule (EVCU) qui assure l’interface entre le groupe motopropulseur et les équipements du véhicule.</p></li>
-<li><p>un système de refroidissement</p></li>
+<li><p class="sd-card-text"><strong>Lithium-ion (Li-ion)</strong>:</p>
+<ul>
+<li><p class="sd-card-text">NMC (Nickel-Manganèse-Cobalt) : Bonne densité énergétique, utilisé dans les véhicules électriques (VE).</p></li>
+<li><p class="sd-card-text">LFP (Lithium-Fer-Phosphate) : Moins dense en énergie que NMC mais plus sûr et plus durable.</p></li>
+<li><p class="sd-card-text">NCA (Nickel-Cobalt-Aluminium) : Densité énergétique élevée, gestion complexe, utilisé notamment par Tesla.</p></li>
+<li><p class="sd-card-text">LTO (Lithium-Titanate-Oxyde) : Longue durée de vie et excellente sécurité, mais faible densité énergétique.</p></li>
+<li><p class="sd-card-text">LiPo (Lithium Polymère) : se caractérise par une densité d’énergie élevée, une forme flexible grâce à son électrolyte sous forme de gel polymère,</p></li>
 </ul>
-<p><em>Moteur + Onduleur + EVCU de la société ACTIA</em>
-<img alt="MotorInverter" src="../_images/MotorInverter.png" /></p>
-<p><em>Coupe de la Nissan Leaf montrant une partie de la batterie</em>
-<img alt="BatteryPack" src="../_images/BatteryPack_Nissan_Leaf.JPG" /></p>
-<p><em>Système de refroidissement d’une Audi quattro hybride</em><br />
-<img alt="CoolingSystem" src="../_images/thermal_management_audi.jpg" /></p>
-<p>La masse ajoutée par ces systèmes et notemment la batterie peuvent avoir un impact sur la conception des systèmes de freinage et la suspension du véhicule. L’ajout d’une direction et d’un freinage pilotés permet aussi de constituer une base technologique pour développer des véhicules autonomes.</p>
-</section>
-<section id="architecture-generale-dune-chaine-de-propulsion-electrique">
-<h2>Architecture générale d’une chaine de propulsion électrique<a class="headerlink" href="#architecture-generale-dune-chaine-de-propulsion-electrique" title="Permalink to this heading">#</a></h2>
-<p>La Figure ci-dessous réprésente l’architecture générale de la chaine d’énergie d’un véhicule électrique sur batterie. Cette configuration peut être complétée et complexifiée dans le cas de véhicules hybrides.</p>
-<p><em>Architecture générale d’un véhicule électrique [<span class="xref myst">Liu, 2012</span>]</em><br />
-<img alt="EV configuration" src="../_images/EVconfiguration.PNG" /></p>
+</li>
+<li><p class="sd-card-text"><strong>Plomb-acide :</strong> Technologie ancienne, faible coût mais faible densité énergétique. Principalement utilisé pour les systèmes de démarrage ou le stockage stationnaire.</p></li>
+<li><p class="sd-card-text"><strong>Nickel (NiCd, NiMH) :</strong> Obsolète pour la plupart des applications modernes. Le NiMH est encore utilisé dans certaines applications hybrides.</p></li>
+<li><p class="sd-card-text"><strong>Sodium-ion :</strong>  Une alternative émergente, moins coûteuse et plus respectueuse de l’environnement, mais moins dense énergétiquement que le Li-ion.</p></li>
+</ul>
+</div>
+</details><p><em>Architecture d’une <a class="reference external" href="https://lythbattery.com/what-is-battery-module">batterie de traction</a></em><br />
+<img alt="Cell to Pack" src="notebook/figures/Cell2Pack.png" /></p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Elements technologiques complémentaires    <div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">Les batteries de traction doivent être protégées et optimisées pour garantir leur sécurité, leur efficacité et leur durabilité. Voici les technologies clés :</p>
+<ul class="simple">
+<li><p class="sd-card-text"><strong>BMS (Battery Management System) :</strong> Le BMS est l’unité de gestion électronique essentielle pour le bon fonctionnement des batteries. Fonctions principales :</p>
+<ul>
+<li><p class="sd-card-text">Surveillance : Mesure les tensions, les courants et les températures des cellules.</p></li>
+<li><p class="sd-card-text">Équilibrage : Égalise les tensions des cellules en série pour prévenir la surcharge ou la décharge excessive.</p></li>
+<li><p class="sd-card-text">Protection : Détecte les anomalies (surchauffe, courts-circuits, etc.) et coupe le circuit si nécessaire.</p></li>
+<li><p class="sd-card-text">Communication : Transmet les données au système de contrôle du véhicule (ECU).</p></li>
+<li><p class="sd-card-text">Gestion thermique : Interface avec les systèmes de refroidissement pour éviter la surchauffe.</p></li>
+</ul>
+</li>
+<li><p class="sd-card-text"><strong>Systèmes de refroidissement :</strong> La gestion thermique est cruciale pour maintenir les performances et éviter les dégradations des cellules.</p>
+<ul>
+<li><p class="sd-card-text">Refroidissement par air : Utilise des flux d’air forcé pour dissiper la chaleur (simple, mais moins efficace).</p></li>
+<li><p class="sd-card-text">Refroidissement liquide : Utilise des circuits de liquide caloporteur circulant dans les modules ou  des plaques froides (plus complexe, mais très efficace).</p></li>
+</ul>
+</li>
+</ul>
+</div>
+</details></section>
+<section id="notations-generales-associees-aux-batteries">
+<h2>Notations générales associées aux batteries<a class="headerlink" href="#notations-generales-associees-aux-batteries" title="Permalink to this heading">#</a></h2>
+<p>Voici quelques grandeurs et notations associées aux batteries:</p>
+<ul class="simple">
+<li><p><strong>Capacité nominale © :</strong> Mesurée en ampères-heures (Ah), elle représente la quantité totale de charge que la batterie peut stocker.</p></li>
+<li><p><strong>Taux de décharge (C-rate) :</strong> il mesure la vitesse à laquelle une batterie est déchargée. 1C signifie que la batterie est déchargée en une heure, 2C en 30 minutes.</p></li>
+<li><p><strong>Énergie spécifique et densité énergétique :</strong></p>
+<ul>
+<li><p>Énergie spécifique (Wh/kg) : Énergie stockée par unité de poids.</p></li>
+<li><p>Densité énergétique (Wh/L) : Énergie stockée par unité de volume.</p></li>
+</ul>
+</li>
+<li><p><strong>Tension nominale (V) :</strong> Tension moyenne d’une cellule ou d’un pack dans des conditions normales.</p></li>
+<li><p>**Cycle de vie ! ** Nombre de cycles de charge-décharge qu’une batterie peut effectuer avant que sa capacité ne tombe sous un seuil (généralement 80 % de la capacité initiale).</p></li>
+<li><p><strong>SOC (State of Charge) :</strong> Représente le pourcentage de charge restante.</p></li>
+<li><p><strong>IR (Internal Resistance) :</strong> Résistance interne de la batterie, qui affecte la puissance maximale et les pertes thermiques.</p></li>
+</ul>
+<p><em>Batterie LiPo</em><br />
+<img alt="Pack Lipo" src="../_images/LipoExample.png" /></p>
 <blockquote>
-<div><p><strong>Question:</strong> Préciser les types de convertisseur statique (électronique de puissance) sur cette architecture et leurs fonctions.</p>
+<div><p><strong>Question</strong>: Calculer la puissance spécifique et l’énergie spécifique de cette batterie LiPo de 273g.</p>
 </div></blockquote>
+</section>
+<section id="modelisation-systeme-dune-batterie">
+<h2>Modélisation système d’une batterie<a class="headerlink" href="#modelisation-systeme-dune-batterie" title="Permalink to this heading">#</a></h2>
+<p>La modélisation d’une batterie nécessite une approche couplée électro-thermique [<span class="xref myst">Damay, 2016</span>] combinant des modèles électriques (tels que le circuit Randles) avec des modèles thermiques pour simuler à la fois les pertes électriques et les effets thermiques. Ces approches prennent en compte la diffusion des ions aux seins des matériaux actifs des électrodes et l’électrolyte et la génération de chaleur interne due au courant de charge et décharge.</p>
+<p><em>Couplage entre les modèles thermique, électrique et de génération de chaleur</em>
+<img alt="Couplage de modeles" src="../_images/ElectroThermiqueBat.PNG" /></p>
 </section>
 <section id="references">
 <h2>Références<a class="headerlink" href="#references" title="Permalink to this heading">#</a></h2>
-<p>[Liu, 2012]Liu, W., Torsten, H., &amp; Drobnik, J. (2012). Effective thermal simulation of power electronics in hybrid and electric vehicles. World Electric Vehicle Journal, 5(2), 574-580.</p>
+<p><strong>[Damay, 20016]</strong> Damay, N. M. R., Friedrich, G., &amp; Forgez, C. (2016, June). Modelisation thermique en vue du dimensionnement d’un pack batterie, avec prise en compte du couplage electro-thermique pour la caracterisation des pertes electriques. In Symposium de Genie Electrique. <a class="reference external" href="https://hal.science/hal-01361630/document">Link</a></p>
 </section>
 </section>
 
@@ -538,20 +604,20 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="00a_IntroductionSNBC.html"
+       href="02b_Chopper.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Empreinte carbone de la mobilité</p>
+        <p class="prev-next-title">Simulation d’un hacheur</p>
       </div>
     </a>
     <a class="right-next"
-       href="00c_IntroductionSysteme.html"
+       href="03b_Battery.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Simulation système</p>
+        <p class="prev-next-title">Simulation d’une batterie de véhicule électrique</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -570,8 +636,9 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#principales-briques-technologiques">Principales briques technologiques</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#architecture-generale-dune-chaine-de-propulsion-electrique">Architecture générale d’une chaine de propulsion électrique</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#de-la-cellule-au-pack-batterie">De la cellule au pack batterie</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#notations-generales-associees-aux-batteries">Notations générales associées aux batteries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modelisation-systeme-dune-batterie">Modélisation système d’une batterie</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">Références</a></li>
 </ul>
   </nav></div>
