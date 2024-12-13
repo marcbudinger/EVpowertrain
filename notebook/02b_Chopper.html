@@ -69,7 +69,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="shortcut icon" href="../_static/logo.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Simulation d’une batterie de véhicule électrique" href="03a_Battery.html" />
+    <link rel="next" title="Simulation d’une batterie de véhicule électrique" href="03b_Battery.html" />
     <link rel="prev" title="Convertisseurs statiques : panorama" href="02a_ConverterPanorama.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -187,7 +187,7 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Batterie</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="03a_Battery.html">Simulation d’une batterie de véhicule électrique</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03b_Battery.html">Simulation d’une batterie de véhicule électrique</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Refroidissement</span></p>
 <ul class="nav bd-sidenav">
@@ -498,7 +498,12 @@ document.write(`
 <div><p><strong>Exercice :</strong> Tracer l’évolution de l’ondulations de courant en fonction du rapport cyclique. Quel est le point de fonctionnement le plus critique ?</p>
 </div></blockquote>
 <p>Pour les calculs suivants, ce rapport cyclique critique sera supposé.</p>
-<div class="cell tag_{ tag_&quot;tags&quot;: tag_[ tag_] tag_} tag_&quot;hide-cell&quot; docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell content</span>
+<span class="expanded">Hide code cell content</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -516,14 +521,12 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Matplotlib is building the font cache; this may take a moment.
-</pre></div>
-</div>
 <img alt="../_images/7eb584782df24296ebd64c9d82466f1baeb595c8502cabcca85803485d2fbff5.png" src="../_images/7eb584782df24296ebd64c9d82466f1baeb595c8502cabcca85803485d2fbff5.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The critical duty cycle is: 0.50
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <blockquote>
 <div><p><strong>Question :</strong> Expliciter l’intérêt de l’ajout d’une inductance de filtrage dans la configuration simulée précédente. Proposer une valeur d’inductance permettant de limiter l’ondulation de courant à 10%. Vérifier par simulation.</p>
@@ -533,7 +536,12 @@ document.write(`
 <blockquote>
 <div><p><strong>Question :</strong> En amont de la cellule de commutation, il est nécessaire d’ajouter un condensateur afin de limiter l’ondulation de tension : <span class="math notranslate nohighlight">\(\Delta V=\frac{I_{max}(1-\alpha)\alpha T}{C}\)</span>. Proposer un valeur de capacité limitant l’ondulation de tension à 10%.</p>
 </div></blockquote>
-<div class="cell tag_{ tag_&quot;tags&quot;: tag_[ tag_] tag_} tag_&quot;hide-cell&quot; docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell content</span>
+<span class="expanded">Hide code cell content</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calcul de l&#39;inductance et du condensateur</span>
 
@@ -570,6 +578,7 @@ Courant RMS dans le condensateur: 70.0 A
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 </section>
 <section id="modele-moyen-de-hacheur">
@@ -632,11 +641,74 @@ Courant RMS dans le condensateur: 70.0 A
 <div><p><strong>Question :</strong> Expliquer commant les valeurs moyennes et RMS du courant ont été calculées. Rappeler les hypothèses de calculs liant ces formules à l’explication des pertes du début du paragraphe.</p>
 </div></blockquote>
 <blockquote>
-<div><p><strong>Exercice :</strong> Analyser le modèle <code class="docutils literal notranslate"><span class="pre">Hacheur_Mean_Losses</span></code>. Paramétrer le modèle avec les informations disponibles dans les documents constructeurs : <a class="reference external" href="https://www.arcel.fr/fr/transistors-mosfet/725-IXFN420N10T.html">Transistor MOS</a>, <a class="reference external" href="https://www.tdk-electronics.tdk.com/inf/20/50/ds/B2562_.pdf">DC capacitor</a> et l’annexe sur l’<span class="xref myst">inductance</span>.</p>
+<div><p><strong>Exercice :</strong> Analyser le modèle <code class="docutils literal notranslate"><span class="pre">Hacheur_Mean_Losses</span></code>. Paramétrer le modèle avec les informations disponibles dans les documents constructeurs : <a class="reference download internal" download="" href="../_downloads/2d78e1df2c4c41ae4965e917f18b14ca/IXFN420N10T.pdf"><span class="xref download myst">Transistor MOS</span></a>, <a class="reference download internal" download="" href="../_downloads/e7b9afeb249528ad7987ccef26d926c2/TDV_Capcitors_B2562_.pdf"><span class="xref download myst">DC capacitor</span></a> et l’annexe sur l’<span class="xref myst">inductance</span>.</p>
 </div></blockquote>
 <p><em>Simulation du profil de pertes du convertisseur DC/DC</em><br />
 <img alt="Hacheur avec pertes" src="../_images/HacheurMean_Losses.PNG" /></p>
 <p><strong>Remarques</strong> : bien prendre garde au courant maximal efficace ou RMS que peut supporter le condensateur dénommé <span class="math notranslate nohighlight">\(Imax\)</span> dans le datasheet (Maximum rms current for continuous operation for the given frequency range and for the maximum ripple voltage).</p>
+<div class="cell tag_hide-cell docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell content</span>
+<span class="expanded">Hide code cell content</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calcul des principaux parametres de pertes du modele</span>
+
+<span class="c1"># Inductance</span>
+<span class="c1"># ----</span>
+<span class="c1"># pas de calcul ici, voir l&#39;annexe specifiquement dédiée à ce sujet</span>
+<span class="n">R</span> <span class="o">=</span> <span class="mf">1.26e-03</span> <span class="c1"># [Omh] résistance du bobinage de l&#39;inductance</span>
+<span class="n">L</span> <span class="o">=</span> <span class="mf">85e-6</span> <span class="c1"># [H] Inductance</span>
+
+<span class="c1"># Hacheur 2 quadrants (= cellule de commutation avec 2 Transistors et 2 diodes)</span>
+<span class="c1"># ---</span>
+<span class="c1"># https://www.dmcinfo.com/latest-thinking/blog/id/10517/mosfet-power-loss-calculator</span>
+
+<span class="c1"># Frequence de commutation</span>
+<span class="n">f</span> <span class="o">=</span> <span class="mf">10e3</span> <span class="c1"># [Hz]</span>
+
+<span class="c1"># Pertes par conduction Transistor</span>
+<span class="n">V0_T</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1"># [V] pas de seuil en technologie MOS</span>
+<span class="n">Rdson_T</span> <span class="o">=</span> <span class="mf">2.3e-3</span> <span class="c1"># [Ohm] resistance à l&#39;état passant</span>
+
+<span class="c1"># Pertes par commutation Transistor</span>
+<span class="n">Vbus</span> <span class="o">=</span> <span class="mi">50</span> <span class="c1"># [V] DC bus test voltage (Data sheet)</span>
+<span class="n">Current</span> <span class="o">=</span> <span class="mi">100</span> <span class="c1"># [A] Current test (Data sheet)</span>
+<span class="n">Tr</span> <span class="o">=</span> <span class="mf">155e-9</span> <span class="c1"># [s] Rise time (Data sheet)</span>
+<span class="n">Tf</span> <span class="o">=</span> <span class="mf">255e-9</span> <span class="c1"># [s] Fall time (Data sheet)</span>
+<span class="n">EonEoff_T</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">Vbus</span> <span class="o">*</span> <span class="n">Current</span> <span class="o">*</span> <span class="p">(</span><span class="n">Tr</span> <span class="o">+</span> <span class="n">Tf</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Transitor Eon + Eoff switching energy loss : </span><span class="si">%.2e</span><span class="s2"> J&quot;</span><span class="o">%</span><span class="k">EonEoff_T</span>)
+
+<span class="c1"># Pertes par conduction Diode interne</span>
+<span class="n">V0_D</span> <span class="o">=</span> <span class="mf">0.55</span> <span class="c1"># [V] par passage a zero courant en asymptotique sur courbe data sheet</span>
+<span class="n">Ron_D</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.9</span><span class="o">-</span><span class="mf">0.55</span><span class="p">)</span><span class="o">/</span><span class="mi">250</span> <span class="c1"># [Ohm] resistance à l&#39;état passant par pente courbe datasheet</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Ron de la diode: </span><span class="si">%.2e</span><span class="s2"> Ohm&quot;</span><span class="o">%</span><span class="k">Ron_D</span>)
+
+
+<span class="c1"># Pertes par commutation Diode interne</span>
+<span class="n">IR</span><span class="o">=</span><span class="mi">7</span> <span class="c1"># [A] reverse current</span>
+<span class="n">trr</span><span class="o">=</span><span class="mf">140e-9</span> <span class="c1"># [s] recovery time  </span>
+<span class="n">EonEoff_D</span> <span class="o">=</span> <span class="mf">0.125</span> <span class="o">*</span> <span class="n">Vbus</span> <span class="o">*</span> <span class="n">IR</span> <span class="o">*</span> <span class="n">trr</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Diode Eon + Eoff switching energy loss : </span><span class="si">%.2e</span><span class="s2"> J&quot;</span><span class="o">%</span><span class="k">EonEoff_D</span>)
+
+<span class="c1">#┌ Condensateur DC bus </span>
+<span class="c1"># ----</span>
+
+<span class="n">Rs</span> <span class="o">=</span> <span class="mf">1e-3</span> <span class="c1"># [Ohm] résistance série</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Transitor Eon + Eoff switching energy loss : 1.03e-03 J
+Ron de la diode: 1.40e-03 Ohm
+Diode Eon + Eoff switching energy loss : 6.13e-06 J
+</pre></div>
+</div>
+</div>
+</details>
+</div>
 </section>
 </section>
 
@@ -680,7 +752,7 @@ Courant RMS dans le condensateur: 70.0 A
       </div>
     </a>
     <a class="right-next"
-       href="03a_Battery.html"
+       href="03b_Battery.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
