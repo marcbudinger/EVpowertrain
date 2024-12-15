@@ -481,7 +481,7 @@ document.write(`
 <img alt="G4" src="../_images/LocalisationBattteryG4.png" /></p>
 <p>Les caracétristiques générales de la batterie sont :</p>
 <ul class="simple">
-<li><p>Tension nominale : 48V</p></li>
+<li><p>Tension nominale : 48.3V</p></li>
 <li><p>Capacité : 200 Ah</p></li>
 <li><p>Energie : 9.6 kWh</p></li>
 </ul>
@@ -492,8 +492,42 @@ document.write(`
 <p><em>Module</em><br />
 <img alt="G4" src="../_images/Module.png" /></p>
 <blockquote>
-<div><p><strong>Question :</strong> Proposer une configuration possible pour ce pack batterie : nombre de modules, configurations des modules (<span class="math notranslate nohighlight">\(n_s\)</span>, <span class="math notranslate nohighlight">\(n_p\)</span>).</p>
+<div><p><strong>Question :</strong> Proposer une configuration possible pour ce pack batterie : nombre de modules, configurations des modules (<span class="math notranslate nohighlight">\(n_s\)</span>, <span class="math notranslate nohighlight">\(n_p\)</span>). On veut limiter la taille des modules à 2P8S.</p>
 </div></blockquote>
+<div class="cell tag_hide-cell docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell content</span>
+<span class="expanded">Hide code cell content</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Pack</span>
+<span class="n">C</span> <span class="o">=</span> <span class="mi">200</span> <span class="c1"># [Ah] capacité du pack</span>
+<span class="n">Ubat</span><span class="o">=</span><span class="mf">48.3</span> <span class="c1"># [V] tension du pack</span>
+
+<span class="c1"># Cellule</span>
+<span class="n">Ccell</span> <span class="o">=</span> <span class="mi">50</span> <span class="c1"># [Ah] capacité d&#39;une cellule</span>
+<span class="n">Ucell</span> <span class="o">=</span> <span class="mf">3.22</span> <span class="c1"># [V] tension nominale d&#39;une cellule </span>
+
+<span class="c1"># Architecture</span>
+<span class="n">np</span> <span class="o">=</span> <span class="n">C</span> <span class="o">/</span> <span class="n">Ccell</span> <span class="c1"># [-] nb de cellulles en //</span>
+<span class="n">ns</span> <span class="o">=</span> <span class="n">Ubat</span> <span class="o">/</span> <span class="n">Ucell</span> <span class="c1"># [-] nb de cellules en série</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;np = </span><span class="si">%.1f</span><span class="s2">&quot;</span><span class="o">%</span><span class="k">np</span>)
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;ns = </span><span class="si">%.1f</span><span class="s2">&quot;</span><span class="o">%</span><span class="k">ns</span>)
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Soit 2 modules 2P7S en série avec 2 modules 2P8S&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np = 4.0
+ns = 15.0
+Soit 2 modules 2P7S en série avec 2 modules 2P8S
+</pre></div>
+</div>
+</div>
+</details>
+</div>
 </section>
 <section id="tension-en-fonction-de-letat-de-charge">
 <h2>Tension en fonction de l’état de charge<a class="headerlink" href="#tension-en-fonction-de-letat-de-charge" title="Permalink to this heading">#</a></h2>
@@ -509,6 +543,7 @@ document.write(`
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 
 <span class="n">Charge</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">4.2</span><span class="p">,</span> <span class="mf">8.3</span><span class="p">,</span> <span class="mf">13.7</span><span class="p">,</span> <span class="mf">19.0</span><span class="p">,</span> <span class="mf">24.4</span><span class="p">,</span> <span class="mf">29.0</span><span class="p">,</span> <span class="mf">33.6</span><span class="p">,</span> <span class="mf">42.6</span><span class="p">,</span> <span class="mf">45.9</span><span class="p">,</span> <span class="mf">49.1</span><span class="p">,</span> <span class="mf">52.1</span><span class="p">]</span>
+<span class="n">SOT</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">Charge</span><span class="p">)</span> <span class="o">/</span> <span class="nb">max</span><span class="p">(</span><span class="n">Charge</span><span class="p">)</span>
 <span class="n">Tension</span> <span class="o">=</span> <span class="p">[</span><span class="mf">2.5</span><span class="p">,</span> <span class="mf">3.2</span><span class="p">,</span> <span class="mf">3.21</span><span class="p">,</span> <span class="mf">3.25</span><span class="p">,</span> <span class="mf">3.28</span><span class="p">,</span><span class="mf">3.3</span><span class="p">,</span><span class="mf">3.3</span><span class="p">,</span><span class="mf">3.3</span><span class="p">,</span><span class="mf">3.35</span><span class="p">,</span><span class="mf">3.35</span><span class="p">,</span><span class="mf">3.35</span><span class="p">,</span><span class="mf">3.45</span><span class="p">]</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Charge</span><span class="p">,</span> <span class="n">Tension</span><span class="p">)</span>
@@ -518,12 +553,20 @@ document.write(`
 
 <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span> <span class="c1"># affiche la figure à l&#39;écran</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">SOT</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">Tension</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </details>
 <div class="cell_output docutils container">
 <img alt="../_images/e9f04f409b545ed09b1c8f5a246d55cb9f74f823f4d29f6f650825a1d1e6bdd3.png" src="../_images/e9f04f409b545ed09b1c8f5a246d55cb9f74f823f4d29f6f650825a1d1e6bdd3.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.         0.0806142  0.15930902 0.26295585 0.3646833  0.46833013
+ 0.55662188 0.64491363 0.81765835 0.88099808 0.94241843 1.        ]
+[2.5, 3.2, 3.21, 3.25, 3.28, 3.3, 3.3, 3.3, 3.35, 3.35, 3.35, 3.45]
+</pre></div>
+</div>
 </div>
 </div>
 <blockquote>
