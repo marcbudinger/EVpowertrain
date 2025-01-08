@@ -29,7 +29,8 @@ parts:
       
 - caption: Refroidissement
   chapters:
-  - file: notebook/04a_Cooling
+  - file: notebook/04a_CoolingPanorama
+  - file: notebook/04b_Cooling
 
       
       
