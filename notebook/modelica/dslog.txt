@@ -1,0 +1,91 @@
+Log-file of program ./dymosim
+(generated: Sun Dec 15 21:39:41 2024)
+
+dymosim started
+... "dsin.txt" loading (dymosim input file)
+... loading "tab1" from "C:/Users/mbudinge/Documents/GitHub/EVpowertrain/notebook/modelica/Velocity_Cycle.txt"
+... loading "tab1" from "C:/Users/mbudinge/Documents/GitHub/EVpowertrain/notebook/modelica/Slope_Cycle.txt"
+... "Battery_Profile.mat" creating (simulation result file)
+
+Integration started at T = 0 using integration method DASSL
+(DAE multi-step solver (dassl/dasslrt of Petzold modified by Dassault Systemes))
+
+ERROR: Failed to solve nonlinear system using Newton solver.
+  Time: 1531.009191600306
+  Tag: simulation.nonlinear[1]
+
+  Common causes:
+   * The system of equations has no solution - the residual will be above zero.
+     - In some cases the event-logic can cause this.
+   * Starting values are too far from the solution.
+     - In rare cases this could occur at events.
+   * The equations are too discontinuous for the nonlinear solver - the residual will have knees.
+     - Likely caused by over-using noEvent.
+
+  To get more information consider the options:
+   * Simulation/Setup/Translation/Generate listing of translated Modelica code in dsmodel.mof
+   * Simulation/Setup/Translation/List non-linear iteration variables
+   * The options under the group Simulation/Setup/Debug/Nonlinear solver diagnostics
+
+  Jacobian inverse norm estimate: 5.43097
+  Condition number estimate: 1
+  1-norm of the residual = 65.6394
+
+  Last value of the solution:
+    chopperStepDown.i2 = 4.43092
+  Last value of the residual:
+    { -65.6394 }
+ 
+
+ERROR: Failed to solve nonlinear system using Newton solver.
+  Time: 2341.483672969405
+  Tag: simulation.nonlinear[1]
+
+  For debugging help refer to the first error message of this type.
+
+  Jacobian inverse norm estimate: 9.79974e-009
+  Condition number estimate: 1
+  1-norm of the residual = 1.50119
+
+  Last value of the solution:
+    chopperStepDown.i2 = -164.892
+  Last value of the residual:
+    { 1.50119 }
+ 
+Solver will attempt to handle this problem.
+
+Residual was NaN or Inf.
+
+Non-linear solver will attempt to handle this problem.
+
+Residual was NaN or Inf.
+
+Non-linear solver will attempt to handle this problem.
+
+
+... Warning message from dymosim
+At time T = 2.032388e+004 in current integration interval
+T_interval = 2.032369e+004 ... 2.032400e+004
+a large amount of work has been expended
+(about 500 steps) in the integrator. Probably the communication
+interval is too large or the system is stiff.
+
+Integration terminated successfully at T = 30800
+   CPU-time for integration                : 34.8 seconds
+   CPU-time for one grid interval          : 0.696 milliseconds
+   CPU-time for initialization             : 0.009 seconds
+   Number of result points                 : 119264
+   Number of grid points                   : 50001
+   Number of accepted steps                : 835828
+   Number of f-evaluations (dynamics)      : 1387406
+   Number of crossing function evaluations : 960452
+   Number of Jacobian-evaluations          : 659073
+   Number of model time events             : 30800
+   Number of input time events             : 0
+   Number of state events                  : 4032
+   Number of step events                   : 0
+   Minimum integration stepsize            : 3.05e-008
+   Maximum integration stepsize            : 0.5
+   Maximum integration order               : 5
+Calling terminal section
+... "dsfinal.txt" creating (final states)
